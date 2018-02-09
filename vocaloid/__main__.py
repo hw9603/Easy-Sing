@@ -17,7 +17,8 @@ def main():
     #	note.syllable = next in word_syllables array
     #	note.phonemes = next in phonetic_syllables array
     # ssml = songToSSML(s)
-    # print ssml to file
+    # send ssml to maryTTS
+    # output voice. 
 
 
 if __name__ == "__main__":
