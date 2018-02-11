@@ -1,17 +1,34 @@
+"""
+Parse phonemes from lyrics.
+
+Obtain lyrics one of these two ways:
+
+1.
+    from utils import *
+    lyrics = get_lyrics_from_file("lyrics.txt")
+2.
+    lyrics = "These are some lyrics stored in a string"
+
+Then, call the functions listed below like this:
+
+phonemes_ssml = get_phonemes_ssml(lyrics)
+phonemes = get_phonemes(phonemes_ssml)
+ph_syllables = parse_phonemes_by_syllables(phonemes)
+"""
+
 from urllib.parse import *
 from urllib.request import *
 import xml.etree.ElementTree as ET
 import string
-from utils import *
 
-def get_phonemes_ssml(filename):
+def get_phonemes_ssml(lyrics):
     """
     Return the SSML format string from marytts server.
-    Input: name of lyrics file
+    Input: lyrics
+
+    Note: this requires the marytts server to be running already.
+    (perhaps we should refactor to explicitly start running it here...)
     """
-    data_path = get("data_path")
-    lyrics_file = open(data_path + filename, "r")
-    lyrics = lyrics_file.read()
     # Remove all punctuations in order to have all sentences processed.
     for c in string.punctuation:
         lyrics = lyrics.replace(c, "")
@@ -58,11 +75,5 @@ def parse_phonemes_by_syllables(phonemes_list):
         for ps in ph_syll:
             phonemes_syllables_list.append(ps)
     return phonemes_syllables_list
-
-
-"""Sample Usage"""
-# phonemes_ssml = get_phonemes_ssml("lyrics.txt")
-# ph = get_phonemes(phonemes_ssml)
-# ph_syll = parse_phonemes_by_syllables(ph)
 
 
