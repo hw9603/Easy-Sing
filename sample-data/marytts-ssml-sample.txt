@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><maryxml xmlns="http://mary.dfki.de/2002/MaryXML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="0.5" xml:lang="en-US">
+<p>
+<s>
+<prosody rate="400ms" pitch="1200abs">
+<t ph="w i" >
+we
+</t>
+</prosody>
+<prosody rate="1200ms" pitch="1200abs">
+<t ph="' w E l - k @ m" >
+</t>
+</prosody>
+<prosody rate="2000ms" pitch="1200abs">
+<t ph="i" >
+
+</t>
+</prosody>
+</s>
+</p>
+</maryxml>
