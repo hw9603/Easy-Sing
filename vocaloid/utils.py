@@ -8,8 +8,8 @@ def get(attr):
     return node
 
 def get_lyrics_from_file(filename):
-	"""Return lyrics stored in filename as a string."""
-	data_path = get("data_path")
+    """Return lyrics stored in filename as a string."""
+    data_path = get("data_path")
     lyrics_file = open(data_path + filename, "r")
     lyrics = lyrics_file.read()
     return lyrics
