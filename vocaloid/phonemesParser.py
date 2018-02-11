@@ -30,6 +30,8 @@ def get_phonemes_ssml(lyrics):
     (perhaps we should refactor to explicitly start running it here...)
     """
     # Remove all punctuations in order to have all sentences processed.
+    if not lyrics:
+        return
     for c in string.punctuation:
         lyrics = lyrics.replace(c, "")
 
@@ -52,6 +54,8 @@ def get_phonemes(phonemes_ssml):
     Return a list of phonemes. Each element of the list corresponds to the
     phonemes of a word.
     """
+    if not phonemes_ssml:
+        return
     root = ET.fromstring(phonemes_ssml)
     prefix = "{http://mary.dfki.de/2002/MaryXML}"
 
@@ -68,6 +72,8 @@ def parse_phonemes_by_syllables(phonemes_list):
     corresponds to the phonemes of a single syllables. Parsing of syllables
     is based on the dash symbol in the phonemes string.
     """
+    if not phonemes_list:
+        return []
     phonemes_syllables_list = []
     for ph in phonemes_list:
         ph_syll = ph.split('-')
@@ -75,5 +81,4 @@ def parse_phonemes_by_syllables(phonemes_list):
         for ps in ph_syll:
             phonemes_syllables_list.append(ps)
     return phonemes_syllables_list
-
 
