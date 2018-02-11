@@ -11,6 +11,7 @@ setup(
         'pycodestyle==2.3.1',
         'pydocstyle==2.0.0',
         'pylint==1.8.1',
+        'pyphen==0.9.4',
         'sh==1.12.14',
     ],
 )
