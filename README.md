@@ -1,4 +1,4 @@
-How to install Brad's voice on you computer:
+#### How to install Brad's voice on you computer:
 
 Option 1 (tested working):
 
@@ -12,3 +12,12 @@ Option 2 (theoretically working if you are using Mac OSX):
 
 - Unzip `brad_voice/marytts-5.3.zip`. 
 - Run Marytts server. 
+
+
+
+#### How to install Pygame on mac:
+
+1. `brew install mercurial`
+2. `brew install sdl sdl_image sdl_mixer sdl_ttf portmidi`
+3. `brew tap homebrew/headonly` (if you have any trouble here, try `brew install --HEAD smpeg` instead)
+4. `sudo -H pip install hg+http://bitbucket.org/pygame/pygame` or `sudo -H pip3 install hg+http://bitbucket.org/pygame/pygame` for python3.
