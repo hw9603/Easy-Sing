@@ -19,8 +19,8 @@ class FileChooserPopup(GridLayout):
         self.file_chooser = FileChooserIconView()
         self.add_widget(self.file_chooser)
 
-        self.lyric_button = Button(text='Confirm lyric file')
-        self.add_widget(self.lyric_button)
+        # self.lyric_button = Button(text='Confirm lyric file')
+        # self.add_widget(self.lyric_button)
 
 class BaseScreen(GridLayout):
 
@@ -30,7 +30,11 @@ class BaseScreen(GridLayout):
         # self.size_hint = (1.0, 0.5)
 
         self.lyric_popup = Popup(title='Select file')
-        self.lyric_popup.add_widget(FileChooserPopup())
+        file_chooser = FileChooserPopup()
+        self.lyric_popup.add_widget(file_chooser)
+
+        file_chooser.add_widget(Button(text='Confirm lyric file',
+                                       on_press=lambda x: self.lyric_popup.dismiss()))
 
         self.lyric_chooser = Button(text='Choose lyric file', on_press=self.lyric_popup.open)
         self.add_widget(self.lyric_chooser)
