@@ -26,14 +26,21 @@ class BaseScreen(GridLayout):
 
     def __init__(self, **kwargs):
         super(BaseScreen, self).__init__(**kwargs)
-        self.cols = 1
+        self.cols = 2
+        # self.size_hint = (1.0, 0.5)
 
         self.lyric_popup = Popup(title='Select file')
         self.lyric_popup.add_widget(FileChooserPopup())
 
         self.lyric_chooser = Button(text='Choose lyric file', on_press=self.lyric_popup.open)
-        
         self.add_widget(self.lyric_chooser)
+
+        self.music_generator = Button(text='Generate music file', on_press=self.generate_callback)
+        self.add_widget(self.music_generator)
+
+
+    def generate_callback(self, instance):
+        self.music_generator.text = 'Generated!'
 
 
 class MyApp(App):
