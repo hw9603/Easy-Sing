@@ -28,7 +28,8 @@ class BaseScreen(GridLayout):
         super(BaseScreen, self).__init__(**kwargs)
         self.cols = 1
 
-        self.lyric_popup = Popup(title='Select file', content=Label(text='Please choose a file'))
+        self.lyric_popup = Popup(title='Select file')
+        self.lyric_popup.add_widget(FileChooserPopup())
 
         self.lyric_chooser = Button(text='Choose lyric file', on_press=self.lyric_popup.open)
         
