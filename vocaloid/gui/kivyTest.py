@@ -3,7 +3,7 @@ kivy.require('1.10.0')
 
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
-# from kivy.uix.label import Label
+from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
@@ -28,9 +28,10 @@ class BaseScreen(GridLayout):
         super(BaseScreen, self).__init__(**kwargs)
         self.cols = 1
 
-        self.lyric_popup = Popup(context=FileChooserPopup)
+        self.lyric_popup = Popup(title='Select file', content=Label(text='Please choose a file'))
 
-        self.lyric_chooser = Button(text='Choose lyric file', on_press=self.lyric_popup)
+        self.lyric_chooser = Button(text='Choose lyric file', on_press=self.lyric_popup.open)
+        
         self.add_widget(self.lyric_chooser)
 
 
