@@ -3,30 +3,34 @@ kivy.require('1.10.0')
 
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.label import Label
+# from kivy.uix.label import Label
+from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 
-class LoginScreen(GridLayout):
+from kivy.uix.filechooser import FileChooserIconView
+
+class FileChooserPopup(GridLayout):
 
     def __init__(self, **kwargs):
-        super(LoginScreen, self).__init__(**kwargs)
+        super(FileChooserPopup, self).__init__(**kwargs)
         self.cols = 2
 
-        self.add_widget(Label(text='User Name'))
+        self.file_chooser = FileChooserIconView()
+        self.add_widget(self.file_chooser)
 
-        self.username = TextInput(multiline=False)
-        self.add_widget(self.username)
+        self.lyric_button = Button(text='Choose lyric file')
+        self.add_widget(self.lyric_button)
 
-        self.add_widget(Label(text='password'))
 
-        self.password = TextInput(password=True, multiline=False)
-        self.add_widget(self.password)
+    def choose_file(self):
+        print()
+        return
 
 
 class MyApp(App):
 
     def build(self):
-        return LoginScreen()
+        return FileChooserPopup()
 
 
 if __name__ == '__main__':
