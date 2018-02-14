@@ -22,11 +22,6 @@ class FileChooserPopup(GridLayout):
         self.add_widget(self.lyric_button)
 
 
-    def choose_file(self):
-        print()
-        return
-
-
 class MyApp(App):
 
     def build(self):
