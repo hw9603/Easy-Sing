@@ -2,7 +2,9 @@ import sys, os
 sys.path.insert(0,'../')
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QImage, QPalette, QBrush, QKeyEvent
-from PyQt5.QtCore import QSize, QCoreApplication
+from PyQt5.QtCore import QSize, QCoreApplication, QThreadPool, QRunnable
+from mido.sockets import PortServer, connect
+import mido
 
 # from .gui.mainwindow_ui import Ui_MainWindow as mainWindow
 from .gui.mainUI import MainUI
@@ -10,8 +12,11 @@ from utils import *
 from syllablesParser import *
 from midiLoader import *
 from song import *
+# from midiListener import *
+from midiMonitor import *
 
-class MainWindow(QMainWindow, MainUI):
+
+class MainWindow(QMainWindow, MainUI, QRunnable):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUi(self)
@@ -21,6 +26,7 @@ class MainWindow(QMainWindow, MainUI):
         self.lyrics = ""
         self.syllables = []
         self.song = Song("")
+        self.threadpool = QThreadPool()
 
 
     def onStartButtonClick(self):
@@ -73,7 +79,23 @@ class MainWindow(QMainWindow, MainUI):
         for i, syl in enumerate(syllables):
             label = getattr(self, "label_%i" % i)
             label.setText(syl)
+        midiListener = MidiListener(self)
+        self.threadpool.start(midiListener)
+        midiMonitor = MidiMonitor()
+        self.threadpool.start(midiMonitor)
 
+
+
+class MidiListener(QRunnable):
+    def __init__(self, window_in):
+        super().__init__()
+        self.window = window_in
+
+    @pyqtSlot()
+    def run(self):
+        for message in PortServer('localhost', 8080):
+            if message.type == 'note_on':
+                self.window.label_0.setText(str(message.note))
 
 
 
