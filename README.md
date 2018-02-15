@@ -21,3 +21,10 @@ Option 2 (theoretically working if you are using Mac OSX):
 2. `brew install sdl sdl_image sdl_mixer sdl_ttf portmidi`
 3. `brew tap homebrew/headonly` (if you have any trouble here, try `brew install --HEAD smpeg` instead)
 4. `sudo -H pip install hg+http://bitbucket.org/pygame/pygame` or `sudo -H pip3 install hg+http://bitbucket.org/pygame/pygame` for python3.
+
+
+
+#### Useful Links:
+
+1. Quick start for using Qt creator with PyQt5.
+   https://waleedkhan.name/blog/pyqt-designer/#a-brief-guide-to-installi
