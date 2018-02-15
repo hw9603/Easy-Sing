@@ -66,8 +66,15 @@ class MainWindow(QMainWindow, MainUI):
         self.syllables = parse_syllables(self.lyrics)
         self.setupUi3(self)
         self.back2Button.clicked.connect(self.onBack2ButtonClick)
-        self.pitchLabel.setText("A3 Flat")
-        self.lengthLabel.setText("Whole")
+        self.renderSyllables(self.syllables)
+
+
+    def renderSyllables(self, syllables):
+        for i, syl in enumerate(syllables):
+            label = getattr(self, "label_%i" % i)
+            label.setText(syl)
+
+
 
 
 def main():
