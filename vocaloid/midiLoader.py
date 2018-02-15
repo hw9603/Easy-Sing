@@ -7,9 +7,8 @@ from song import *
 
 # # pygame.mixer.music.load(get("data_path")+"teddybear.mid")
 # # pygame.mixer.music.play()
-
-def midiLoader():
-    s = Song("")
+# s = Song("")
+def midiLoader(s):
     pygame.init()
     pygame.fastevent.init()
     event_get = pygame.fastevent.get
@@ -28,8 +27,10 @@ def midiLoader():
         events = event_get()
         for e in events:
             if e.type in [KEYDOWN]:
-                if e.unicode in [1, 2, 3, 4]:
+                if int(e.unicode) in [1, 2, 3, 4]:
                     length = e.unicode
+                if int(e.unicode) in [0]:
+                    going = False
             if e.type in [QUIT]:
                 going = False
 
@@ -38,14 +39,19 @@ def midiLoader():
             if int(midi_events[0][0][0]) in [224,225,226]:#Pitch Bender
                     print("pitch blender: ", str(midi_events[0][0][2]))#right(0)  center(64)  left(124)
 
-            print("full midi_events " + str(midi_events))
+            # print("full midi_events " + str(midi_events))
             note = midi_events[0][0][1]
             velocity = midi_events[0][0][2]
             C0 = 24
             octave = (note - C0) // 12
             pitch = (note - C0) % 12
-            print("octave: ", octave, " pitch: ", pitch, " length: ", length)
-            s.addNote(octave, pitch, length)
+            note_off = (velocity == 0)
+            if not note_off:
+                if length != -1:
+                    print("octave: ", octave, " pitch: ", pitch, " length: ", length)
+                    s.addNote(octave, pitch, length)
+                else:
+                    print("Please first add the length for the note!")
             length = -1
             #convert them into pygame events.
             midi_evs = pygame.midi.midis2events(midi_events, i.device_id)
@@ -56,7 +62,7 @@ def midiLoader():
     i.close()
     pygame.midi.quit()
     pygame.quit()
-    exit()
 
-midiLoader()
+# midiLoader(s)
+# print(s)
 
