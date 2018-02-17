@@ -77,6 +77,10 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
     def renderSyllables(self, syllables):
         for i, syl in enumerate(syllables):
+            # Sorry, the UI now can only handle 35 syllables...
+            if i > 35:
+                print("too many syllables in the lyrics")
+                break
             label = getattr(self, "label_%i" % i)
             label.setText(syl)
         midiListener = MidiListener(self)
