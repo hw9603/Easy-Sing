@@ -94,12 +94,23 @@ class MidiListener(QRunnable):
     def __init__(self, window_in):
         super().__init__()
         self.window = window_in
+        self.num = 0
 
     @pyqtSlot()
     def run(self):
         for message in PortServer('localhost', 8080):
             if message.type == 'note_on':
-                self.window.label_0.setText(str(message.note))
+                if self.num > 35:
+                    continue
+                label = getattr(self.window, "label_" + str(self.num))
+                C0 = 24
+                octave = (message.note - C0) // 12
+                pitch = (message.note - C0) % 12
+                notation = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+                syllable = label.text()
+                note_info = syllable + "\n" + notation[pitch] + " " + str(octave) + "\n" + "whole"
+                label.setText(note_info)
+                self.num += 1
 
 
 
