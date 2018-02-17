@@ -1,7 +1,7 @@
 """Object representation of a Note."""
 
-from pitch import *
-from length import *
+from vocaloid.pitch import *
+from vocaloid.length import *
 
 class Note:
 	def __init__(self, octave_in, pitch_in, 

@@ -1,10 +1,10 @@
 """Object representation of a song."""
 
-from note import *
-from phonemesParser import parse_phonemes_by_syllables as parse_phonemes
-from phonemesParser import get_phonemes_ssml as get_ssml
-from phonemesParser import get_phonemes
-from syllablesParser import *
+from vocaloid.note import *
+from vocaloid.phonemesParser import parse_phonemes_by_syllables as parse_phonemes
+from vocaloid.phonemesParser import get_phonemes_ssml as get_ssml
+from vocaloid.phonemesParser import get_phonemes
+from vocaloid.syllablesParser import *
 
 class Song:
     def __init__(self, lyrics):

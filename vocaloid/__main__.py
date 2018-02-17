@@ -1,28 +1,109 @@
-"""Driver program."""
+import sys, os
+# sys.path.insert(0,'../')
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QImage, QPalette, QBrush, QKeyEvent
+from PyQt5.QtCore import QSize, QCoreApplication, QThreadPool, QRunnable
+from mido.sockets import PortServer, connect
+import mido
 
-import os
+# from .gui.mainwindow_ui import Ui_MainWindow as mainWindow
+from .gui.mainUI import MainUI
+from vocaloid.utils import *
+from vocaloid.syllablesParser import *
+# from midiLoader import *
+from vocaloid.song import *
+# from midiListener import *
+from vocaloid.midiMonitor import *
 
-from test_song import test
 
-def importMIDI(filepath):
-    """Import MIDI file with filepath"""
-    return 0
+class MainWindow(QMainWindow, MainUI, QRunnable):
+    def __init__(self):
+        super(MainWindow, self).__init__()
+        self.setupUi(self)
+        self.tutorialButton.clicked.connect(self.onTutorialButtonClick)
+        self.startButton.clicked.connect(self.onStartButtonClick)
+        self.lyricsFilePath = ""
+        self.lyrics = ""
+        self.syllables = []
+        self.song = Song("")
+        self.threadpool = QThreadPool()
+
+
+    def onStartButtonClick(self):
+        self.setupUi2(self)
+        self.chooseButton.clicked.connect(self.openFile)
+        self.nextButton.clicked.connect(self.loadFile)
+        self.backButton.clicked.connect(self.onBackButtonClick)
+
+
+    def onTutorialButtonClick(self):
+        print("Try tutorial!")
+
+
+    def onBackButtonClick(self):
+        self.setupUi(self)
+        self.tutorialButton.clicked.connect(self.onTutorialButtonClick)
+        self.startButton.clicked.connect(self.onStartButtonClick)
+
+
+    def onBack2ButtonClick(self):
+        self.setupUi2(self)
+        self.chooseButton.clicked.connect(self.openFile)
+        self.nextButton.clicked.connect(self.loadFile)
+        self.backButton.clicked.connect(self.onBackButtonClick)
+
+
+    def openFile(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*)", options=options)
+        if fileName:
+            self.lyricsFilePath = fileName
+            self.fileLabel.setText(fileName.split("/")[-1])
+            self.lyrics = get_lyrics_from_filepath(self.lyricsFilePath)
+            self.textEdit.setText(self.lyrics)
+
+
+    def loadFile(self):
+        if self.lyricsFilePath:
+            self.lyrics = get_lyrics_from_filepath(self.lyricsFilePath)
+        else:
+            self.lyrics = self.textEdit.toPlainText()
+        self.syllables = parse_syllables(self.lyrics)
+        self.setupUi3(self)
+        self.back2Button.clicked.connect(self.onBack2ButtonClick)
+        self.renderSyllables(self.syllables)
+
+
+    def renderSyllables(self, syllables):
+        for i, syl in enumerate(syllables):
+            label = getattr(self, "label_%i" % i)
+            label.setText(syl)
+        midiListener = MidiListener(self)
+        self.threadpool.start(midiListener)
+        midiMonitor = MidiMonitor()
+        self.threadpool.start(midiMonitor)
+
+
+
+class MidiListener(QRunnable):
+    def __init__(self, window_in):
+        super().__init__()
+        self.window = window_in
+
+    @pyqtSlot()
+    def run(self):
+        for message in PortServer('localhost', 8080):
+            if message.type == 'note_on':
+                self.window.label_0.setText(str(message.note))
+
+
 
 def main():
-    """Driver program."""
-    test()
-    # midi = importMIDI(path)
-    # words = getWords()
-    # phonetic_syllables = getP(words)
-    # word_syllables = getW(words)
-    # s = Song()
-    # for note in s.notes:
-    #   note.syllable = next in word_syllables array
-    #   note.phonemes = next in phonetic_syllables array
-    # ssml = songToSSML(s)
-    # send ssml to maryTTS
-    # output voice. 
-
+    app = QApplication(sys.argv)
+    main_window = MainWindow()
+    main_window.show()
+    sys.exit(app.exec_())
 
 if __name__ == "__main__":
     main()

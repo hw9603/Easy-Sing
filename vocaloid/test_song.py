@@ -1,6 +1,6 @@
 """Test the generation of a song."""
 
-from song import *
+from vocaloid.song import *
 
 def test():
 	lines = [
