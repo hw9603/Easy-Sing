@@ -47,7 +47,7 @@ sudo pip3 install -e .
 # install marytts 5.x
 echo -e "${RED}Installing MaryTTS 5.x${NC}"
 cd ./marytts
-mvn --quiet install
+mvn -q -B install
 cd ../
 
 DIRECTORY="./marytts/target/marytts-5.3-SNAPSHOT/lib"
