@@ -1,6 +1,5 @@
 RED='\033[0;31m' # For color shell
 NC='\033[0m' # No Color
-printf "I ${RED}love${NC} Stack Overflow\n"
 command -v java >/dev/null 2>&1 || \
     { echo -e >&2 "${RED}I require java but it's not installed.  Aborting."; exit 1; }
 command -v mvn >/dev/null 2>&1 || \
