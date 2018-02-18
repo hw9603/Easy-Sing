@@ -1,0 +1,16 @@
+plugins {
+    id 'groovy'
+}
+
+dependencies {
+    compile project(':marytts-languages:marytts-lang-fr')
+    compile libs.groovy
+    runtime group: 'de.dfki.mary', name: 'marytts-lexicon-lb', version: '0.1.0'
+    testCompile libs.testng
+    testCompile libs.xmlunit
+}
+
+test {
+    useTestNG()
+    systemProperty 'lb.userdict', "$rootDir/src/main/dist/user-dictionaries/userdict-lb.txt"
+}

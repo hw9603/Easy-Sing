@@ -1,0 +1,19 @@
+apply from: "$rootDir/buildLogic.gradle"
+
+dependencies {
+    compile libs.commonsIo
+    compile libs.commonsLang
+    compile libs.log4j
+    testCompile libs.testng
+}
+
+processResources {
+    filesMatching '**/specification-version.txt', {
+        expand project.properties
+    }
+}
+
+test {
+    useTestNG()
+    systemProperty 'version', version
+}

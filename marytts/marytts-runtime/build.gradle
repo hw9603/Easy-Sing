@@ -1,0 +1,25 @@
+plugins {
+    id 'groovy'
+}
+
+apply from: "$rootDir/buildLogic.gradle"
+
+dependencies {
+    compile project(':marytts-common')
+    compile project(':marytts-signalproc')
+    compile libs.commonsCollection
+    compile libs.emotionmlCheckerJava
+    compile libs.fastMd5
+    compile libs.guava
+    compile libs.hsqldb
+    compile libs.httpCore
+    compile libs.httpNio
+    compile libs.icu4j
+    compile libs.jtokCore
+    compile libs.opennlpTools
+    compile libs.trove4j
+    testCompile project(path: ':marytts-signalproc', configuration: 'testCompile')
+    testCompile libs.festAssert
+    integrationTestCompile libs.groovy
+    integrationTestRuntime project(':voice-cmu-slt-hsmm')
+}

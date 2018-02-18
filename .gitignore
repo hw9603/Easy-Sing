@@ -103,3 +103,25 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+##############
+# from MaryTTS
+# Maven
+marytts/target/
+
+# Gradle
+marytts/.gradle/
+
+# Eclipse
+marytts/.settings/
+marytts/.project
+marytts/.classpath
+
+# misc. testing
+marytts/tmp/
+marytts/log/
+marytts/test-output/
+
+# OSX
+.DS_Store
+marytts/.DS_Store
