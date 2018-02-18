@@ -41,11 +41,11 @@ else
 fi
 
 # install python dependency
-echo -e "${RED}Installing python dependency"
+echo -e "${RED}Installing python dependency${NC}"
 sudo pip3 install -e .
 
 # install marytts 5.x
-echo -e "${RED}Installing MaryTTS 5.x"
+echo -e "${RED}Installing MaryTTS 5.x${NC}"
 cd ./marytts
 mvn --quiet install
 cd ../
@@ -53,10 +53,10 @@ cd ../
 DIRECTORY="./marytts/target/marytts-5.3-SNAPSHOT/lib"
 if [ ! -d "$DIRECTORY" ]; then
   # Exit if mvn build failed or something strange happened.
-  echo -e "${RED}MaryTTS Install Failed..."
+  echo -e "${RED}MaryTTS Install Failed...${NC}"
   exit 1
 fi
 # install brad's voice.
 cp ./brad_voice/results/Feb11-170sentences/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar \
    $DIRECTORY/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar
-echo -e "${RED}Successfully Installed"
+echo -e "${RED}Successfully Installed${NC}"
