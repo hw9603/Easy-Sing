@@ -11,7 +11,6 @@ If you are using Mac OSX, `brew` is required. If you are using Linux, `apt-get` 
 ##### 1.1. Installation Steps:
 
 1. At root directory `…/498-Vocaloid`,  run `./setup.sh` 
-2. Then run `sudo pip3 install -e .` 
 
 #### 2. How to run EasySing:
 
