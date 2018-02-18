@@ -23,7 +23,7 @@ else
 fi
 # install marry tts 5.x
 cd ./marytts
-mvn install
+mvn --quiet install
 cd ../
 
 DIRECTORY="./marytts/target/marytts-5.3-SNAPSHOT/lib"
@@ -35,3 +35,4 @@ fi
 
 cp ./brad_voice/results/Feb11-170sentences/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar \
    $DIRECTORY/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar
+echo "successfully installed"
