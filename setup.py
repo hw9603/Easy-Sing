@@ -21,6 +21,7 @@ setup(
         'pyphen==0.9.4',
         'sh==1.12.14',
         'mido==1.2.8',
-        'python-rtmidi==1.1.0'
+        'python-rtmidi==1.1.0',
+        'pyqt5==5.7.1'
     ],
 )
