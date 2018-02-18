@@ -21,5 +21,17 @@ else
         echo "known system..."
         exit 1
 fi
-cd ./marytts/
+# install marry tts 5.x
+cd ./marytts
 mvn install
+cd ../
+
+DIRECTORY="./marytts/target/marytts-5.3-SNAPSHOT/lib"
+if [ ! -d "$DIRECTORY" ]; then
+  # Exit if mvn build failed or something strange happened.
+  echo "MaryTTS Install Failed..."
+  exit 1
+fi
+
+cp ./brad_voice/results/Feb11-170sentences/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar \
+   $DIRECTORY/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar
