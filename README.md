@@ -1,30 +1,8 @@
-#### How to install Brad's voice on you computer:
+#### How to install EasySing:
 
-Option 1 (tested working):
+EasySing requires `jre` and `mvn` installed. (To test that just type `java` or `mvn` in command line and see whether the command exists). 
 
-- Clone Marytts from GitHub then checkout branch 5.x
-- Replace `marytts/marytts-runtime/src/main/java/marytts/modules/acoustic/ProsodyElementHandler.java` with `brad_voice/results/ProsodyElementHandler.java`.
-- Build Marytts with `mvn install`.
-- Put `brad_voice/results/Feb11-170sentences/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar` in `marytts/target/marytts-5.3-SNAPSHOT/lib/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar`. 
-- Run Marytts server. 
+##### Steps:
 
-Option 2 (theoretically working if you are using Mac OSX):
-
-- Unzip `brad_voice/marytts-5.3.zip`. 
-- Run Marytts server. 
-
-
-
-#### How to install Pygame on mac:
-
-1. `brew install mercurial`
-2. `brew install sdl sdl_image sdl_mixer sdl_ttf portmidi`
-3. `brew tap homebrew/headonly` (if you have any trouble here, try `brew install --HEAD smpeg` instead)
-4. `sudo -H pip install hg+http://bitbucket.org/pygame/pygame` or `sudo -H pip3 install hg+http://bitbucket.org/pygame/pygame` for python3.
-
-
-
-#### Useful Links:
-
-1. Quick start for using Qt creator with PyQt5.
-   https://waleedkhan.name/blog/pyqt-designer/#a-brief-guide-to-installi
+1. At root directory `…/498-Vocaloid`, run `python3 setup.py install`.
+2. Then run `./setup.sh`.

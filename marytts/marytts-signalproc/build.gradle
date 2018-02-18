@@ -1,9 +1,0 @@
-apply from: "$rootDir/buildLogic.gradle"
-
-dependencies {
-    compile project(':marytts-common')
-    compile libs.jama
-    compile libs.jampack
-    compile libs.swingLayout
-    testCompile libs.junit
-}

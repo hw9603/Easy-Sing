@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.dfki.mary</groupId>
 		<artifactId>marytts</artifactId>
-		<version>6.0-SNAPSHOT</version>
+		<version>5.3-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>marytts-common</artifactId>
@@ -56,16 +56,5 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-
-		<plugins>
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<systemPropertyVariables>
-						<version>${project.version}</version>
-					</systemPropertyVariables>
-				</configuration>
-			</plugin>
-		</plugins>
 	</build>
 </project>

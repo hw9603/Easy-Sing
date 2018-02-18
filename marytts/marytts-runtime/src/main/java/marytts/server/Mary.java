@@ -282,6 +282,9 @@ public class Mary {
 			// Not xalan, no version number
 		}
 
+		// Essential environment checks:
+		EnvironmentChecks.check();
+
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			public void run() {
 				shutdown();
@@ -487,13 +490,13 @@ public class Mary {
 		addJarsToClasspath();
 
 		String server = MaryProperties.needProperty("server");
-		System.err.print("MARY server " + Version.specificationVersion() + " starting as ");
+		System.err.print("MARY server " + Version.specificationVersion() + " starting as a ");
 		if (server.equals("socket"))
-			System.err.print("a socket server...");
+			System.err.print("socket server...");
 		else if (server.equals("http"))
-			System.err.print("an HTTP server...");
+			System.err.print("HTTP server...");
 		else
-			System.err.print("a command-line application...");
+			System.err.print("command-line application...");
 
 		// first thing we do, let's test if the port is available:
 		int localPort = MaryProperties.needInteger("socket.port");

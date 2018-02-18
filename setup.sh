@@ -1,0 +1,2 @@
+cd ./marytts/
+mvn install

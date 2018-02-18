@@ -1,8 +1,0 @@
-dependencies {
-    runtime group: 'de.dfki.mary', name: 'marytts-lexicon-ru', version: '0.1.0'
-    testCompile libs.testng
-}
-
-test {
-    useTestNG()
-}

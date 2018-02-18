@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>marytts</artifactId>
 		<groupId>de.dfki.mary</groupId>
-		<version>6.0-SNAPSHOT</version>
+		<version>5.3-SNAPSHOT</version>
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
 
@@ -78,7 +78,6 @@
 				<groupId>org.fortasoft</groupId>
 				<artifactId>gradle-maven-plugin</artifactId>
 				<configuration>
-					<gradleVersion>2.11</gradleVersion>
 					<args>
 						<arg>--quiet</arg>
 					</args>
