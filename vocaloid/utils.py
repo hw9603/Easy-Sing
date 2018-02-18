@@ -13,3 +13,8 @@ def get_lyrics_from_file(filename):
     lyrics_file = open(data_path + filename, "r")
     lyrics = lyrics_file.read()
     return lyrics
+
+def get_lyrics_from_filepath(filepath):
+    lyrics_file = open(filepath)
+    lyrics = lyrics_file.read()
+    return lyrics
