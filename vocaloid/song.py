@@ -80,8 +80,8 @@ class Song:
             file.write("</prosody>\n")
         
         # write overhead at the end
-        file.write("</p>\n")
         file.write("</s>\n")
+        file.write("</p>\n")
         file.write("</maryxml>\n")
 
         file.close()
