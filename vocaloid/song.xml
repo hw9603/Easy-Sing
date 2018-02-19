@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><maryxml xmlns="http://mary.dfki.de/2002/MaryXML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="0.5" xml:lang="en-US">
+<p>
+<s>
+<prosody rate="250ms" pitch="1300">
+<t ph="' AI" >
+I
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1300">
+<t ph="' m EI d" >
+made
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1380">
+<t ph="' V p" >
+up
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1440">
+<t ph="' D I s" >
+this
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1440">
+<t ph="' s O N" >
+song
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1440">
+<t ph="' t u" >
+to
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1440">
+<t ph="' p r u v" >
+prove
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1380">
+<t ph="@" >
+a
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1380">
+<t ph="' p OI n t" >
+point
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1300">
+<t ph="' AI" >
+I
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1300">
+<t ph="' w V n " >
+won
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1380">
+<t ph=" d r=" >
+der
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1440">
+<t ph="' h aU" >
+how
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1440">
+<t ph="' w E l" >
+well
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1440">
+<t ph="' AI" >
+I
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1440">
+<t ph="' m EI k" >
+make
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1400">
+<t ph="' I t" >
+it
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1400">
+<t ph="' s aU n d" >
+sound
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1285">
+<t ph="' { n d" >
+And
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1285">
+<t ph="' h aU" >
+how
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1330">
+<t ph="' d I " >
+dif
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1400">
+<t ph=" f @ " >
+fi
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1495">
+<t ph=" k @ l t" >
+cult
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1495">
+<t ph="' I t" >
+it
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1495">
+<t ph="' I z" >
+is
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1400">
+<t ph="' t u" >
+to
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1400">
+<t ph="' r AI m" >
+rhyme
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1285">
+<t ph="' b EI s t" >
+Based
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1285">
+<t ph="' s @U " >
+sole
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1330">
+<t ph=" l l i" >
+ly
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1400">
+<t ph="' A n" >
+on
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1495">
+<t ph="' D I s" >
+this
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1495">
+<t ph="' t AI p" >
+type
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1495">
+<t ph="' V v" >
+of
+</t>
+</prosody>
+<prosody rate="250ms" pitch="1440">
+<t ph="' I n " >
+in
+</t>
+</prosody>
+<prosody rate="500ms" pitch="1440">
+<t ph=" p U t" >
+put
+</t>
+</prosody>
+</p>
+</s>
+</maryxml>
