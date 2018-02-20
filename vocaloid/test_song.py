@@ -4,10 +4,10 @@ from vocaloid.song import *
 
 def test():
 	lines = [
-		"I made up this song to prove a point",
-		"I wonder how well I make it sound",
-		"And how difficult it is to rhyme",
-		"Based solely on this type of input"
+		"I made up this song to prove a point.",
+		"I wonder how well I make it sound.",
+		"And how difficult it is to rhyme.",
+		"Based solely on this type of input."
 	]
 
 	# melody from Blue Danube by Strauss, in the key of D Major
