@@ -6,7 +6,7 @@
 
 EasySing requires `jre`, `python3`, `pip3`, and `mvn` installed. (To test that just type `java` or `python3` or `pip3` or `mvn` in command line and see whether the command exists)
 
-If you are using Mac OSX, `brew` is required. If you are using Linux, `apt-get` is required for package installation. 
+If you are using Linux, `apt-get` is required for package installation. 
 
 ##### 1.1. Installation Steps:
 

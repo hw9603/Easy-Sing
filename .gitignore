@@ -116,6 +116,7 @@ marytts/.gradle/
 marytts/.settings/
 marytts/.project
 marytts/.classpath
+marytts/marytts-languages/log/
 
 # misc. testing
 marytts/tmp/
