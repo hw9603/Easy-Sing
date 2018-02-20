@@ -17,6 +17,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         sudo apt-get install libasound2-dev
 elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX
+        echo -e "${RED}Mac OSX${NC}"
         # command -v brew >/dev/null 2>&1 || \
         #     { echo -e >&2 "${RED}I require brew but it's not installed.  Aborting."; exit 1; }
 elif [[ "$OSTYPE" == "cygwin" ]]; then
