@@ -332,6 +332,41 @@ class MainUI(object):
         self.label_34.setText(_translate("MainWindow", "None"))
         self.label_35.setText(_translate("MainWindow", "None"))
 
+    def setupUi4(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setMinimumSize(QtCore.QSize(800, 600))
+        MainWindow.setMaximumSize(QtCore.QSize(800, 600))
+        font = QtGui.QFont()
+        font.setFamily("ProFont for Powerline")
+        MainWindow.setFont(font)
+        MainWindow.setAutoFillBackground(True)
+        MainWindow.setStyleSheet("QMainFrame { background-image: url(:background.jpeg) }")
+        self.centralWidget = QtWidgets.QWidget(MainWindow)
+        self.centralWidget.setObjectName("centralWidget")
+        self.generateButton = QtWidgets.QPushButton(self.centralWidget)
+        self.generateButton.setGeometry(QtCore.QRect(300, 120, 211, 71))
+        self.generateButton.setStyleSheet("font: 24pt \"ProFont for Powerline\";")
+        self.generateButton.setObjectName("generateButton")
+        MainWindow.setCentralWidget(self.centralWidget)
+        self.menuBar = QtWidgets.QMenuBar(MainWindow)
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 22))
+        self.menuBar.setObjectName("menuBar")
+        MainWindow.setMenuBar(self.menuBar)
+        self.mainToolBar = QtWidgets.QToolBar(MainWindow)
+        self.mainToolBar.setObjectName("mainToolBar")
+        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.mainToolBar)
+        self.statusBar = QtWidgets.QStatusBar(MainWindow)
+        self.statusBar.setObjectName("statusBar")
+        MainWindow.setStatusBar(self.statusBar)
+
+        self.retranslateUi4(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi4(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "Vocaloid"))
+        self.generateButton.setText(_translate("MainWindow", "Generate Song"))
 
 
 
