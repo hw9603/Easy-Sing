@@ -69,9 +69,11 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
             self.lyrics = get_lyrics_from_filepath(self.lyricsFilePath)
         else:
             self.lyrics = self.textEdit.toPlainText()
+        self.song.addLyrics(self.lyrics)
         self.syllables = parse_syllables(self.lyrics)
         self.setupUi3(self)
         self.back2Button.clicked.connect(self.onBack2ButtonClick)
+        self.next2Button.clicked.connect(self.onNext2ButtonClick)
         self.renderSyllables(self.syllables)
 
 
@@ -88,6 +90,15 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         midiMonitor = MidiMonitor()
         self.threadpool.start(midiMonitor)
 
+
+    def onNext2ButtonClick(self):
+        self.setupUi4(self)
+        self.generateButton.clicked.connect(self.generateSong)
+
+
+    def generateSong(self):
+        print(self.song)
+        self.song.convertToMaryXML()
 
 
 class MidiListener(QRunnable):
@@ -106,6 +117,8 @@ class MidiListener(QRunnable):
                 C0 = 24
                 octave = (message.note - C0) // 12
                 pitch = (message.note - C0) % 12
+                length = 1
+                self.window.song.addNote(octave, pitch, length)
                 notation = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
                 syllable = label.text()
                 note_info = syllable + "\n" + notation[pitch] + " " + str(octave) + "\n" + "whole"

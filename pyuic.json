@@ -1,8 +1,8 @@
 {
     "files": [
         [
-            "myapp/gui/*.ui",
-            "myapp/gui"
+            "vocaloid/gui/*.ui",
+            "vocaloid/gui"
         ]
     ],
     "hooks": [],
