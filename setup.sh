@@ -1,4 +1,5 @@
 RED='\033[0;31m' # For color shell
+GREEN='\033[0;32m' # For color shell
 NC='\033[0m' # No Color
 command -v java >/dev/null 2>&1 || \
     { echo -e >&2 "${RED}I require java but it's not installed.  Aborting.${NC}"; exit 1; }
@@ -8,7 +9,7 @@ command -v python3 >/dev/null 2>&1 || \
     { echo -e >&2 "${RED}I require python3 but it doesn't exist.  Aborting.${NC}"; exit 1; }
 command -v pip3 >/dev/null 2>&1 || \
     { echo -e >&2 "${RED}I require pip3 but it doesn't exist.  Aborting.${NC}"; exit 1; }
-echo -e "${RED}Installing python system dependency${NC}"
+echo -e "${GREEN}Installing python system dependency${NC}"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
         # ...
         command -v apt-get >/dev/null 2>&1 || \
@@ -40,11 +41,11 @@ else
 fi
 
 # install python dependency
-echo -e "${RED}Installing python dependency${NC}"
+echo -e "${GREEN}Installing python dependency${NC}"
 sudo pip3 install -e .
 
 # install marytts 5.x
-echo -e "${RED}Installing MaryTTS 5.x${NC}"
+echo -e "${GREEN}Installing MaryTTS 5.x${NC}"
 cd ./marytts
 mvn -q install
 cd ../
@@ -58,4 +59,4 @@ fi
 # install brad's voice.
 cp ./brad_voice/results/Feb11-170sentences/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar \
    $DIRECTORY/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar
-echo -e "${RED}Successfully Installed${NC}"
+echo -e "${GREEN}Successfully Installed${NC}"
