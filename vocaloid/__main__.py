@@ -3,8 +3,12 @@ import sys, os
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QImage, QPalette, QBrush, QKeyEvent
 from PyQt5.QtCore import QSize, QCoreApplication, QThreadPool, QRunnable
+from PyQt5.QtMultimedia import QSound
 from mido.sockets import PortServer, connect
 import mido
+from urllib.parse import *
+from urllib.request import *
+import time
 
 # from .gui.mainwindow_ui import Ui_MainWindow as mainWindow
 from .gui.mainUI import MainUI
@@ -94,11 +98,34 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
     def onNext2ButtonClick(self):
         self.setupUi4(self)
         self.generateButton.clicked.connect(self.generateSong)
+        self.playButton.clicked.connect(self.playSong)
+        self.playButton.setDisabled(True)
 
 
     def generateSong(self):
-        print(self.song)
         self.song.convertToMaryXML()
+        xml_file = open("song.xml")
+        xml = xml_file.read()
+        host_name = "http://localhost"
+        port_num = ":59125"
+        operation = "/process?"
+        input_text = xml
+        input_type = "RAWMARYXML"
+        output_type = "AUDIO"
+        locale = "en_US"
+        audio = "WAVE_FILE"
+        get_string = host_name + port_num + operation + "INPUT_TEXT=" \
+                     + quote_plus(xml) + "&INPUT_TYPE=" + input_type \
+                     + "&OUTPUT_TYPE=" + output_type + "&LOCALE=" + locale\
+                     + "&AUDIO=" + audio
+        urlopen(get_string)
+        self.soundfilename = 'speech.wav'
+        urlretrieve(get_string, self.soundfilename)
+        self.playButton.setDisabled(False)
+
+
+    def playSong(self):
+        QSound.play(self.soundfilename)
 
 
 class MidiListener(QRunnable):

@@ -348,6 +348,10 @@ class MainUI(object):
         self.generateButton.setGeometry(QtCore.QRect(300, 120, 211, 71))
         self.generateButton.setStyleSheet("font: 24pt \"ProFont for Powerline\";")
         self.generateButton.setObjectName("generateButton")
+        self.playButton = QtWidgets.QPushButton(self.centralWidget)
+        self.playButton.setGeometry(QtCore.QRect(340, 300, 131, 71))
+        self.playButton.setStyleSheet("font: 24pt \"ProFont for Powerline\";")
+        self.playButton.setObjectName("playButton")
         MainWindow.setCentralWidget(self.centralWidget)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
         self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 22))
@@ -367,6 +371,7 @@ class MainUI(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Vocaloid"))
         self.generateButton.setText(_translate("MainWindow", "Generate Song"))
+        self.playButton.setText(_translate("MainWindow", "Play!"))
 
 
 

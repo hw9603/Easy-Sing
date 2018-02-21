@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?><maryxml xmlns="http://mary.dfki.de/2002/MaryXML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="0.5" xml:lang="en-US">
 <p>
 <s>
-<prosody rate="250ms" pitch="1275">
+<prosody rate="250ms" pitch="1330">
 <t ph="' I f" >
 If
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1275">
+<prosody rate="250ms" pitch="1350">
 <t ph="' j u" >
 you
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1300">
+<prosody rate="250ms" pitch="1400">
 <t ph="' g @U" >
 go
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1300">
+<prosody rate="250ms" pitch="1495">
 <t ph="' d aU n" >
 down
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1330">
+<prosody rate="250ms" pitch="1300">
 <t ph="' I n" >
 in
 </t>
@@ -31,57 +31,57 @@ in
 the
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1330">
+<prosody rate="250ms" pitch="1440">
 <t ph="' w U d z" >
 woods
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1350">
+<prosody rate="250ms" pitch="1330">
 <t ph="t @ " >
 to
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1350">
+<prosody rate="250ms" pitch="1400">
 <t ph=" ' d EI" >
 day
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1350">
+<prosody rate="250ms" pitch="1440">
 <t ph="' j O r" >
 You're
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1400">
+<prosody rate="250ms" pitch="1495">
 <t ph="' S U r" >
 sure
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1440">
+<prosody rate="250ms" pitch="1275">
 <t ph="' V v" >
 of
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1495">
+<prosody rate="250ms" pitch="1330">
 <t ph="@" >
 a
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1275">
+<prosody rate="250ms" pitch="1350">
 <t ph="' b I g" >
 big
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1275">
+<prosody rate="250ms" pitch="1400">
 <t ph="s r= " >
 sur
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1275">
+<prosody rate="250ms" pitch="1440">
 <t ph=" ' p r AI z" >
 prise
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1300">
+<prosody rate="250ms" pitch="1495">
 <t ph="' I f" >
 If
 </t>
@@ -91,12 +91,12 @@ If
 you
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1330">
+<prosody rate="250ms" pitch="1495">
 <t ph="' g @U" >
 go
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1350">
+<prosody rate="250ms" pitch="1440">
 <t ph="' d aU n" >
 down
 </t>
@@ -106,47 +106,47 @@ down
 in
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1400">
+<prosody rate="250ms" pitch="1330">
 <t ph="D @" >
 the
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1440">
+<prosody rate="250ms" pitch="1470">
 <t ph="' w U d z" >
 woods
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1400">
+<prosody rate="250ms" pitch="1380">
 <t ph="t @ " >
 to
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1440">
+<prosody rate="250ms" pitch="1470">
 <t ph=" ' d EI" >
 day
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1400">
+<prosody rate="250ms" pitch="1380">
 <t ph="' j u d" >
 You'd
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1400">
+<prosody rate="250ms" pitch="1285">
 <t ph="' b E " >
 bet
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1440">
+<prosody rate="250ms" pitch="1420">
 <t ph=" t r=" >
 ter
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1495">
+<prosody rate="250ms" pitch="1380">
 <t ph="' g @U" >
 go
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1495">
+<prosody rate="250ms" pitch="1315">
 <t ph="' I n" >
 in
 </t>
@@ -156,27 +156,27 @@ in
 dis
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1470">
+<prosody rate="250ms" pitch="1440">
 <t ph=" ' g AI z" >
 guise!
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1495">
+<prosody rate="250ms" pitch="1420">
 <t ph="' f O r" >
 For
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1275">
+<prosody rate="250ms" pitch="1400">
 <t ph="' E " >
 ev
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1300">
+<prosody rate="250ms" pitch="1350">
 <t ph=" v r= " >
 ery
 </t>
 </prosody>
-<prosody rate="250ms" pitch="1300">
+<prosody rate="250ms" pitch="1400">
 <t ph=" i" >
 bear
 </t>
