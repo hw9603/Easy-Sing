@@ -10,13 +10,10 @@ from urllib.parse import *
 from urllib.request import *
 import time
 
-# from .gui.mainwindow_ui import Ui_MainWindow as mainWindow
 from .gui.mainUI import MainUI
 from vocaloid.utils import *
 from vocaloid.syllablesParser import *
-# from midiLoader import *
 from vocaloid.song import *
-# from midiListener import *
 from vocaloid.midiMonitor import *
 
 
@@ -151,7 +148,6 @@ class MidiListener(QRunnable):
                 note_info = syllable + "\n" + notation[pitch] + " " + str(octave) + "\n" + "whole"
                 label.setText(note_info)
                 self.num += 1
-
 
 
 def main():

@@ -1,8 +1,8 @@
-#### 0. Introduction
+### 0. Introduction
 
 EasySing is a project for EECS 498. 
 
-#### 1. How to install EasySing:
+### 1. How to install EasySing:
 
 EasySing requires `jdk` (Java 8), `mvn` (version 3.x), `python3`, and `pip3`   installed. To test that:
 ```shell
@@ -19,18 +19,19 @@ If you are using Max OSX, `brew` is strongly recommended. If you are using Linux
 
 ##### 1.1. Installation Steps:
 
-1. At root directory `…/498-Vocaloid`,  run `./setup.sh` 
+At root directory `…/498-Vocaloid`,  run `./setup.sh` 
 
-#### 2. How to run EasySing:
+### 2. How to run EasySing:
 
 At root directory `…/498-Vocaloid`,  run `./run.sh`
 
-#### 3. Troubleshooting:
+### 3. Troubleshooting:
 
 **3.1** On Mac OSX, if you saw this error:
 
 ```
-ImportError: dlopen(/usr/local/lib/python3.6/site-packages/PyQt5/QtWidgets.so, 2): Library not loaded: @rpath/QtWidgets.framework/Versions/5/QtWidgets
+ImportError: dlopen(/usr/local/lib/python3.6/site-packages/PyQt5/QtWidgets.so, 2): 
+Library not loaded: @rpath/QtWidgets.framework/Versions/5/QtWidgets
   Referenced from: /usr/local/lib/python3.6/site-packages/PyQt5/QtWidgets.so
   Reason: image not found
 ```
