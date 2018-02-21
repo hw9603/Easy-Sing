@@ -24,7 +24,7 @@
   </property>
   <property name="font">
    <font>
-    <family>ProFont for Powerline</family>
+    <family>Arial</family>
    </font>
   </property>
   <property name="windowTitle">
@@ -47,7 +47,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 24pt &quot;ProFont for Powerline&quot;;</string>
+     <string notr="true">font: 24pt &quot;Arial&quot;;</string>
     </property>
     <property name="text">
      <string>Generate Song</string>
@@ -63,7 +63,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 24pt &quot;ProFont for Powerline&quot;;</string>
+     <string notr="true">font: 24pt &quot;Arial&quot;;</string>
     </property>
     <property name="text">
      <string>Play!</string>

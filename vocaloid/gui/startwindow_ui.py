@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/myapp/gui/startwindow.ui'
+# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/startwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.10
 #
@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
         self.chooseButton = QtWidgets.QPushButton(self.centralWidget)
         self.chooseButton.setGeometry(QtCore.QRect(70, 160, 181, 141))
         font = QtGui.QFont()
-        font.setFamily("ProFont for Powerline")
+        font.setFamily("Arial")
         font.setPointSize(36)
         font.setBold(False)
         font.setItalic(False)
@@ -27,19 +27,19 @@ class Ui_MainWindow(object):
         self.chooseButton.setFont(font)
         self.chooseButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.chooseButton.setAutoFillBackground(False)
-        self.chooseButton.setStyleSheet("font: 36pt \"ProFont for Powerline\";")
+        self.chooseButton.setStyleSheet("font: 36pt \"Arial\";")
         self.chooseButton.setObjectName("chooseButton")
         self.label = QtWidgets.QLabel(self.centralWidget)
-        self.label.setGeometry(QtCore.QRect(280, 210, 41, 31))
+        self.label.setGeometry(QtCore.QRect(280, 210, 61, 41))
         font = QtGui.QFont()
-        font.setFamily("ProFont for Powerline")
+        font.setFamily("Arial")
         font.setPointSize(18)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralWidget)
         self.label_2.setGeometry(QtCore.QRect(360, 30, 301, 41))
         font = QtGui.QFont()
-        font.setFamily("ProFont for Powerline")
+        font.setFamily("Arial")
         font.setPointSize(36)
         font.setBold(False)
         font.setItalic(False)
@@ -48,19 +48,19 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
         self.nextButton = QtWidgets.QPushButton(self.centralWidget)
         self.nextButton.setGeometry(QtCore.QRect(630, 450, 121, 61))
-        self.nextButton.setStyleSheet("font: 36pt \"ProFont for Powerline\";")
+        self.nextButton.setStyleSheet("font: 36pt \"Arial\";")
         self.nextButton.setObjectName("nextButton")
         self.textEdit = QtWidgets.QTextEdit(self.centralWidget)
         self.textEdit.setGeometry(QtCore.QRect(360, 80, 391, 351))
-        self.textEdit.setStyleSheet("font: 24pt \"ProFont for Powerline\";")
+        self.textEdit.setStyleSheet("font: 24pt \"Arial\";")
         self.textEdit.setObjectName("textEdit")
         self.fileLabel = QtWidgets.QLabel(self.centralWidget)
         self.fileLabel.setGeometry(QtCore.QRect(80, 300, 161, 21))
-        self.fileLabel.setStyleSheet("font: 18pt \"ProFont for Powerline\";")
+        self.fileLabel.setStyleSheet("font: 18pt \"Arial\";")
         self.fileLabel.setObjectName("fileLabel")
         self.backButton = QtWidgets.QPushButton(self.centralWidget)
-        self.backButton.setGeometry(QtCore.QRect(70, 450, 121, 61))
-        self.backButton.setStyleSheet("font: 36pt \"ProFont for Powerline\";")
+        self.backButton.setGeometry(QtCore.QRect(70, 450, 131, 61))
+        self.backButton.setStyleSheet("font: 36pt \"Arial\";")
         self.backButton.setObjectName("backButton")
         MainWindow.setCentralWidget(self.centralWidget)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
@@ -89,7 +89,7 @@ class Ui_MainWindow(object):
         self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'ProFont for Powerline\'; font-size:24pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'Arial\'; font-size:24pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.fileLabel.setText(_translate("MainWindow", "<html><head/><body><p>No file chosen.</p></body></html>"))
         self.backButton.setText(_translate("MainWindow", "BACK"))

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/myapp/gui/melodywindow.ui'
+# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/melodywindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.10
 #
@@ -17,12 +17,12 @@ class Ui_MainWindow(object):
         self.centralWidget = QtWidgets.QWidget(MainWindow)
         self.centralWidget.setObjectName("centralWidget")
         self.back2Button = QtWidgets.QPushButton(self.centralWidget)
-        self.back2Button.setGeometry(QtCore.QRect(50, 450, 121, 61))
-        self.back2Button.setStyleSheet("font: 36pt \"ProFont for Powerline\";")
+        self.back2Button.setGeometry(QtCore.QRect(50, 450, 131, 61))
+        self.back2Button.setStyleSheet("font: 36pt \"Arial\";")
         self.back2Button.setObjectName("back2Button")
         self.next2Button = QtWidgets.QPushButton(self.centralWidget)
         self.next2Button.setGeometry(QtCore.QRect(610, 450, 121, 61))
-        self.next2Button.setStyleSheet("font: 36pt \"ProFont for Powerline\";")
+        self.next2Button.setStyleSheet("font: 36pt \"Arial\";")
         self.next2Button.setObjectName("next2Button")
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralWidget)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(30, 20, 741, 411))

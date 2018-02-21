@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/myapp/gui/mainwindow.ui'
+# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.10
 #
@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QtCore.QSize(800, 600))
         MainWindow.setMaximumSize(QtCore.QSize(800, 600))
         font = QtGui.QFont()
-        font.setFamily("ProFont for Powerline")
+        font.setFamily("Arial")
         MainWindow.setFont(font)
         MainWindow.setAutoFillBackground(True)
         MainWindow.setStyleSheet("QMainFrame { background-image: url(:background.jpeg) }")
@@ -24,18 +24,18 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.centralWidget)
         self.label.setGeometry(QtCore.QRect(110, 150, 641, 101))
         font = QtGui.QFont()
-        font.setFamily("ProFont for Powerline")
+        font.setFamily("Arial")
         font.setItalic(False)
         self.label.setFont(font)
         self.label.setScaledContents(False)
         self.label.setObjectName("label")
         self.tutorialButton = QtWidgets.QPushButton(self.centralWidget)
-        self.tutorialButton.setGeometry(QtCore.QRect(160, 360, 171, 71))
-        self.tutorialButton.setStyleSheet("font: 36pt \"ProFont for Powerline\";")
+        self.tutorialButton.setGeometry(QtCore.QRect(160, 360, 211, 71))
+        self.tutorialButton.setStyleSheet("font: 36pt \"Arial\";")
         self.tutorialButton.setObjectName("tutorialButton")
         self.startButton = QtWidgets.QPushButton(self.centralWidget)
         self.startButton.setGeometry(QtCore.QRect(470, 360, 161, 71))
-        self.startButton.setStyleSheet("font: 36pt \"ProFont for Powerline\";")
+        self.startButton.setStyleSheet("font: 36pt \"Arial\";")
         self.startButton.setObjectName("startButton")
         MainWindow.setCentralWidget(self.centralWidget)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
