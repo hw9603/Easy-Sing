@@ -28,12 +28,14 @@ At root directory `…/498-Vocaloid`,  run `./run.sh`
 3. How to use EasySing
 ---
 
+##### 3.1 Demo
 
+![Alt Text](./tutorial_pic/tutorial.gif)
 
 4. Troubleshooting
 ---
 
-**3.1** On Mac OSX, if you saw this error:
+**4.1** On Mac OSX, if you saw this error:
 
 ```
 ImportError: dlopen(/usr/local/lib/python3.6/site-packages/PyQt5/QtWidgets.so, 2): 
