@@ -69,6 +69,6 @@ def test():
 	print("----------THIS IS THE SONG------------")
 	print(s)
 
-	s.convertToMaryXML()
+	print(s.convertToMaryXML())
 
 test()

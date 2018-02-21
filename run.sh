@@ -1,3 +1,4 @@
+# check whether marytts exits
 DIRECTORY="./marytts/target/marytts-5.3-SNAPSHOT/bin"
 if [ ! -d "$DIRECTORY" ]; then
   # Exit if mvn build failed or something strange happened.
@@ -5,8 +6,15 @@ if [ ! -d "$DIRECTORY" ]; then
   exit 1
 fi
 ./marytts/target/marytts-5.3-SNAPSHOT/bin/marytts-server &
-# echo $!
+# $PID is the pid of marytts
 PID=$!
+# run the main GUI.
 python3 -m vocaloid
-kill -- -$(ps -o pgid= $PID | grep -o [0-9]*)
-# echo $PID
+# kill processes
+if [ -n $(pgrep -P $PID) ]; then
+	kill $(pgrep -P $PID)
+fi
+if [ -n $PID ]; then
+	kill $PID
+fi
+

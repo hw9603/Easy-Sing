@@ -1,8 +1,8 @@
-### 0. Introduction
+## 0. Introduction
 
 EasySing is a project for EECS 498. 
 
-### 1. How to install EasySing:
+## 1. How to install EasySing
 
 EasySing requires `jdk` (Java 8), `mvn` (version 3.x), `python3`, and `pip3`   installed. To test that:
 ```shell
@@ -21,11 +21,17 @@ If you are using Max OSX, `brew` is strongly recommended. If you are using Linux
 
 At root directory `…/498-Vocaloid`,  run `./setup.sh` 
 
-### 2. How to run EasySing:
+## 2. How to run EasySing
 
 At root directory `…/498-Vocaloid`,  run `./run.sh`
 
-### 3. Troubleshooting:
+3. How to use EasySing
+---
+
+
+
+4. Troubleshooting
+---
 
 **3.1** On Mac OSX, if you saw this error:
 
@@ -45,4 +51,4 @@ LDFLAGS=-L/usr/local/opt/qt/lib CPPFLAGS=-I/usr/local/opt/qt/include pip3 instal
 
 If the previous command didn't work, try run this line before reinstalling PyQt5 and then reinstall PyQt5:
 
-`brew install pyqt` 
+```brew install pyqt```
