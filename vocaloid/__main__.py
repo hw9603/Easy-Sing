@@ -31,6 +31,8 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.syllables = []
         self.song = Song("")
         self.threadpool = QThreadPool()
+        if not os.path.exists("./tmp"):
+            os.makedirs("./tmp")
 
 
     def onStartButtonClick(self):
@@ -103,9 +105,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
 
     def generateSong(self):
-        self.song.convertToMaryXML()
-        xml_file = open("song.xml")
-        xml = xml_file.read()
+        xml = self.song.convertToMaryXML()
         host_name = "http://localhost"
         port_num = ":59125"
         operation = "/process?"
@@ -119,7 +119,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
                      + "&OUTPUT_TYPE=" + output_type + "&LOCALE=" + locale\
                      + "&AUDIO=" + audio
         urlopen(get_string)
-        self.soundfilename = 'speech.wav'
+        self.soundfilename = './tmp/speech.wav'
         urlretrieve(get_string, self.soundfilename)
         self.playButton.setDisabled(False)
 

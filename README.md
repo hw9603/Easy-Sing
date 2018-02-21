@@ -27,9 +27,11 @@ ImportError: dlopen(/usr/local/lib/python3.6/site-packages/PyQt5/QtWidgets.so, 2
 
 Try to reinstall PyQt5:
 
-`LDFLAGS=-L/usr/local/opt/qt/lib CPPFLAGS=-I/usr/local/opt/qt/include pip3 install PyQt5  `
+```
+sudo pip3 uninstall PyQt5
+LDFLAGS=-L/usr/local/opt/qt/lib CPPFLAGS=-I/usr/local/opt/qt/include pip3 install PyQt5  
+```
 
 If the previous command didn't work, try run this line before that:
 
 `brew install pyqt` 
-
