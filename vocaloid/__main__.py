@@ -103,6 +103,9 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
     def generateSong(self):
         xml = self.song.convertToMaryXML()
+        file = open("./tmp/song.xml", "w")
+        file.write(xml);
+        file.close();
         host_name = "http://localhost"
         port_num = ":59125"
         operation = "/process?"
