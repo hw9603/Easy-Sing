@@ -67,7 +67,7 @@ class Song:
         # (currently assumes octave is 4 due to lack of data)
         for note in self.notes:
             line = '<prosody rate="' + str(convertToMilliseconds(note.length)) + 'ms"'
-            line = line + ' pitch="' + str(convertPitchToABS(note.pitch)) + '">'
+            line = line + ' pitch="' + str(convertPitchToABS(note.pitch)) + 'abs">'
             res = res + line + "\n"
             line_ph = '<t ph="'
             for phoneme in note.phonemes:
