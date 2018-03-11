@@ -23,6 +23,7 @@ setup(
         'mido==1.2.8',
         'python-rtmidi==1.1.0',
         'PyQt5==5.10.0',
-        'pyqt-distutils==0.7.3'
+        'pyqt-distutils==0.7.3',
+        'qdarkstyle==2.5.1'
     ],
 )
