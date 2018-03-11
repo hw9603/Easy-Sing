@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/startwindow.ui'
+# Form implementation generated from reading ui file '/Users/zihanli/program/498-Vocaloid/vocaloid/gui/startwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.10
 #
@@ -57,16 +57,13 @@ class Ui_MainWindow(object):
         self.fileLabel = QtWidgets.QLabel(self.centralWidget)
         self.fileLabel.setGeometry(QtCore.QRect(80, 300, 161, 21))
         self.fileLabel.setStyleSheet("font: 18pt \"Arial\";")
+        self.fileLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.fileLabel.setObjectName("fileLabel")
         self.backButton = QtWidgets.QPushButton(self.centralWidget)
         self.backButton.setGeometry(QtCore.QRect(70, 450, 131, 61))
         self.backButton.setStyleSheet("font: 36pt \"Arial\";")
         self.backButton.setObjectName("backButton")
         MainWindow.setCentralWidget(self.centralWidget)
-        self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 22))
-        self.menuBar.setObjectName("menuBar")
-        MainWindow.setMenuBar(self.menuBar)
         self.mainToolBar = QtWidgets.QToolBar(MainWindow)
         self.mainToolBar.setObjectName("mainToolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.mainToolBar)

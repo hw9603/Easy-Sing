@@ -22,6 +22,7 @@ setup(
         'sh==1.12.14',
         'mido==1.2.8',
         'python-rtmidi==1.1.0',
-        'PyQt5==5.10.0'
+        'PyQt5==5.10.0',
+        'pyqt-distutils==0.7.3'
     ],
 )

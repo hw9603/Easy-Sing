@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/mainwindow.ui'
+# Form implementation generated from reading ui file '/Users/zihanli/program/498-Vocaloid/vocaloid/gui/mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.10
 #
@@ -22,7 +22,7 @@ class Ui_MainWindow(object):
         self.centralWidget = QtWidgets.QWidget(MainWindow)
         self.centralWidget.setObjectName("centralWidget")
         self.label = QtWidgets.QLabel(self.centralWidget)
-        self.label.setGeometry(QtCore.QRect(110, 150, 641, 101))
+        self.label.setGeometry(QtCore.QRect(90, 150, 641, 101))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setItalic(False)
@@ -38,10 +38,6 @@ class Ui_MainWindow(object):
         self.startButton.setStyleSheet("font: 36pt \"Arial\";")
         self.startButton.setObjectName("startButton")
         MainWindow.setCentralWidget(self.centralWidget)
-        self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 22))
-        self.menuBar.setObjectName("menuBar")
-        MainWindow.setMenuBar(self.menuBar)
         self.mainToolBar = QtWidgets.QToolBar(MainWindow)
         self.mainToolBar.setObjectName("mainToolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.mainToolBar)
@@ -55,7 +51,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Vocaloid"))
-        self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:64pt; color:#2a466f;\">Welcome to Vocaloid!</span></p></body></html>"))
+        self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:64pt; color:#ffaa22;\">Welcome to Vocaloid!</span></p></body></html>"))
         self.tutorialButton.setText(_translate("MainWindow", "TUTORIAL"))
         self.startButton.setText(_translate("MainWindow", "START"))
 

@@ -8,6 +8,12 @@ fi
 ./marytts/target/marytts-5.3-SNAPSHOT/bin/marytts-server &
 # $PID is the pid of marytts
 PID=$!
+
+# modify ui before run the main tool. 
+if [ $1 = 'ui']; then
+	python3 -m vocaloid.modify_ui
+fi
+
 # run the main GUI.
 python3 -m vocaloid
 # kill processes

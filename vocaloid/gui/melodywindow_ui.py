@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/melodywindow.ui'
+# Form implementation generated from reading ui file '/Users/zihanli/program/498-Vocaloid/vocaloid/gui/melodywindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.10
 #
@@ -141,10 +141,6 @@ class Ui_MainWindow(object):
         self.label_35.setObjectName("label_35")
         self.gridLayout.addWidget(self.label_35, 5, 5, 1, 1)
         MainWindow.setCentralWidget(self.centralWidget)
-        self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 22))
-        self.menuBar.setObjectName("menuBar")
-        MainWindow.setMenuBar(self.menuBar)
         self.mainToolBar = QtWidgets.QToolBar(MainWindow)
         self.mainToolBar.setObjectName("mainToolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.mainToolBar)
