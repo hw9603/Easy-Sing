@@ -168,15 +168,6 @@ class MidiListener(QRunnable):
 
 
 def main():
-    # folder = "./vocaloid/gui/"
-    # ui_files = ["mainwindow_ui", "startwindow_ui", "melodywindow_ui", "generatewindow_ui"]
-    # for file in ui_files:
-    #     f = open(folder + file + ".py", "rw")
-    #     origin_str = "self.retranslateUi(MainWindow)"
-    #     new_str = "Ui_MainWindow.retranslateUi(self, MainWindow)"
-    #     f.write(f.read().replace(origin_str, new_str))
-    #     f.close()
-    
     app = QApplication(sys.argv)
     main_window = MainWindow()
     main_window.show()
