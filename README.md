@@ -25,14 +25,22 @@ At root directory `…/498-Vocaloid`,  run `./setup.sh`
 
 At root directory `…/498-Vocaloid`,  run `./run.sh`
 
-3. How to use EasySing
+## 3. How to use EasySing
 ---
-
-##### 3.1 Demo
+### 3.1 Demo
 
 ![Alt Text](./tutorial_pic/tutorial.gif)
 
-4. Troubleshooting
+This animation shows a sample, expected use case for our program. It runs through the following steps:
+
+1. In this alpha release, the user simulates MIDI input using a virtual MIDI piano keyboard program.
+2. The user runs Vocaloid from the command line.
+3. The user has the option of seeing a tutorial for our program, but chooses to just begin.
+4. The user first types in the lyrics of the song that they are creating. (The user can also input lyrics through an existing text file.)
+5. The user sees the words split by syllables and chooses what note each syllable will be by playing notes on a MIDI keyboard.
+6. The user generates the song and listens to the output.
+
+## 4. Troubleshooting
 ---
 
 **4.1** On Mac OSX, if you saw this error:

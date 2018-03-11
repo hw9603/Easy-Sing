@@ -27,10 +27,11 @@ class Length(Enum):
 	Whole = 4
 
 class Note:
-	def __init__(self, octave_in, pitch_in, 
-				 length_in, syllable_in, phonemes_in):
+	def __init__(self, octave_in, pitch_in, length_in,
+				 syllable_in, phonemes_in, is_rest_in=False):
 		self.octave = octave_in
 		self.pitch = Pitch(pitch_in)
 		self.length = Length(length_in)
 		self.syllable = syllable_in
 		self.phonemes = phonemes_in
+		self.is_rest = is_rest_in

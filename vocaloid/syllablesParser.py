@@ -20,7 +20,8 @@ def parse_syllables(lyrics):
     function in pyphen.
     """
     dic = pyphen.Pyphen(lang='en_US')
-    words = lyrics.split()
+    if dic is not None:
+        words = lyrics.split()
     syllables_list = []
     for word in words:
         hyphened_word = dic.inserted(word)

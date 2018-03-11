@@ -148,7 +148,7 @@ class MidiListener(QRunnable):
                 self.window.song.addNote(octave, pitch, length)
                 notation = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
                 syllable = label.text()
-                note_info = syllable + "\n" + notation[pitch] + " " + str(octave) + "\n" + "whole"
+                note_info = syllable + "\n" + notation[pitch] + " " + str(octave) + "\n" + "quarter"
                 label.setText(note_info)
                 self.num += 1
 
