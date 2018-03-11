@@ -2,7 +2,7 @@ import sys, os
 # sys.path.insert(0,'../')
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QImage, QPalette, QBrush, QKeyEvent
-from PyQt5.QtCore import QSize, QCoreApplication, QThreadPool, QRunnable
+from PyQt5.QtCore import QSize, QCoreApplication, QThreadPool, QRunnable, Qt
 from PyQt5.QtMultimedia import QSound
 from mido.sockets import PortServer, connect
 import mido
@@ -27,6 +27,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.lyrics = ""
         self.syllables = []
         self.song = Song("")
+        self.curr_len = 2 # It's a quarter note.
         self.threadpool = QThreadPool()
         if not os.path.exists("./tmp"):
             os.makedirs("./tmp")
@@ -127,12 +128,23 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
     def playSong(self):
         QSound.play(self.soundfilename)
 
+    def keyPressEvent(self, event):
+        if type(event) == QKeyEvent:
+            if event.key() == Qt.Key_D and self.curr_len < 4:
+                self.curr_len += 1
+            elif event.key() == Qt.Key_H and self.curr_len > 1:
+                self.curr_len -= 1
+            event.accept()
+        else:
+            event.ignore()
+
 
 class MidiListener(QRunnable):
     def __init__(self, window_in):
         super().__init__()
         self.window = window_in
         self.num = 0
+
 
     @pyqtSlot()
     def run(self):
@@ -144,11 +156,12 @@ class MidiListener(QRunnable):
                 C0 = 24
                 octave = (message.note - C0) // 12
                 pitch = (message.note - C0) % 12
-                length = 1
+                length = self.window.curr_len
                 self.window.song.addNote(octave, pitch, length)
                 notation = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+                len_notation = ["eighth", "quarter", "half", "whole"]
                 syllable = label.text()
-                note_info = syllable + "\n" + notation[pitch] + " " + str(octave) + "\n" + "quarter"
+                note_info = syllable + "\n" + notation[pitch] + " " + str(octave) + "\n" + len_notation[length - 1]
                 label.setText(note_info)
                 self.num += 1
 
