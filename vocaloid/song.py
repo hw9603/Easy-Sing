@@ -77,18 +77,22 @@ class Song:
         # for each note, write pitch, length, phonemes
         # (currently assumes octave is 4 due to lack of data)
         for note in self.notes:
-            line = '<prosody rate="' + str(convertToMilliseconds(note.length)) + 'ms"'
-            line = line + ' pitch="' + str(convertPitchToABS(note.pitch)) + 'abs">'
-            res = res + line + "\n"
-            line_ph = '<t ph="'
-            for phoneme in note.phonemes:
-                line_ph = line_ph + phoneme
-            line_ph.strip()
-            line_ph = line_ph + '" >'
-            res = res + line_ph + "\n"
-            res = res + note.syllable + "\n"   # this line might not be necessary...
-            res = res + "</t>\n"
-            res = res + "</prosody>\n"
+            if note.is_rest:
+                line = '<boundary duration="' + str(convertToMilliseconds(note.length)) + '"/>'
+                res = res + line
+            else:
+                line = '<prosody rate="' + str(convertToMilliseconds(note.length)) + 'ms"'
+                line = line + ' pitch="' + str(convertPitchToABS(note.pitch)) + 'abs">'
+                res = res + line + "\n"
+                line_ph = '<t ph="'
+                for phoneme in note.phonemes:
+                    line_ph = line_ph + phoneme
+                line_ph.strip()
+                line_ph = line_ph + '" >'
+                res = res + line_ph + "\n"
+                res = res + note.syllable + "\n"   # this line might not be necessary...
+                res = res + "</t>\n"
+                res = res + "</prosody>\n"
 
         # write overhead at the end
         res = res + "</s>\n"

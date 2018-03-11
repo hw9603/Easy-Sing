@@ -16,6 +16,7 @@ from vocaloid.syllablesParser import *
 from vocaloid.song import *
 from vocaloid.midiMonitor import *
 
+import qdarkstyle
 
 class MainWindow(QMainWindow, MainUI, QRunnable):
     def __init__(self):
@@ -154,9 +155,19 @@ class MidiListener(QRunnable):
 
 
 def main():
+    # folder = "./vocaloid/gui/"
+    # ui_files = ["mainwindow_ui", "startwindow_ui", "melodywindow_ui", "generatewindow_ui"]
+    # for file in ui_files:
+    #     f = open(folder + file + ".py", "rw")
+    #     origin_str = "self.retranslateUi(MainWindow)"
+    #     new_str = "Ui_MainWindow.retranslateUi(self, MainWindow)"
+    #     f.write(f.read().replace(origin_str, new_str))
+    #     f.close()
+    
     app = QApplication(sys.argv)
     main_window = MainWindow()
     main_window.show()
+    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
     sys.exit(app.exec_())
 
 if __name__ == "__main__":
