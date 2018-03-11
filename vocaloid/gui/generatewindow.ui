@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1600</width>
+    <height>950</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>800</width>
-    <height>600</height>
+    <width>1600</width>
+    <height>950</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>800</width>
-    <height>600</height>
+    <width>1600</width>
+    <height>950</height>
    </size>
   </property>
   <property name="font">
@@ -40,8 +40,8 @@
    <widget class="QPushButton" name="generateButton">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>120</y>
+      <x>700</x>
+      <y>130</y>
       <width>211</width>
       <height>71</height>
      </rect>
@@ -56,8 +56,8 @@
    <widget class="QPushButton" name="playButton">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>300</y>
+      <x>740</x>
+      <y>340</y>
       <width>131</width>
       <height>71</height>
      </rect>

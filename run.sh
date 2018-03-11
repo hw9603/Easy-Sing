@@ -10,8 +10,11 @@ fi
 PID=$!
 
 # modify ui before run the main tool. 
-if [ $1 = 'ui']; then
-	python3 -m vocaloid.modify_ui
+if [ $# -gt 0 ]; then
+	if [ $1 = 'ui' ]; then
+		python3 setup.py build_ui
+		python3 -m vocaloid.modify_ui
+	fi
 fi
 
 # run the main GUI.
