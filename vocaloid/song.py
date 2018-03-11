@@ -46,6 +46,15 @@ class Song:
         n = Note(octave, pitch, length, syllable, phonemes)
         self.notes.append(n)
 
+    def addRest(self, length):
+        if len(self.notes) >= len(self.syllables):
+            print("Can't add any more notes!")
+            return
+        syllable = ""
+        phonemes = []
+        n = Note(0, 0, length, syllable, phonemes, True)
+        self.notes.append(n)
+
     def addLyrics(self, line):
         for syllable in parse_syllables(line):
             self.syllables.append(syllable)
@@ -78,7 +87,7 @@ class Song:
             res = res + note.syllable + "\n"   # this line might not be necessary...
             res = res + "</t>\n"
             res = res + "</prosody>\n"
-        
+
         # write overhead at the end
         res = res + "</s>\n"
         res = res + "</p>\n"
