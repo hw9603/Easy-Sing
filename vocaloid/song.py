@@ -26,6 +26,7 @@ def convertPitchToABS(pitch):
 
 class Song:
     def __init__(self, lyrics):
+        self.num_notes = 0
         self.notes = []
         self.syllables = parse_syllables(lyrics)
         self.phonemes = parse_phonemes(get_phonemes(get_ssml(lyrics)))
@@ -38,16 +39,17 @@ class Song:
         return string
 
     def addNote(self, octave, pitch, length):
-        if len(self.notes) >= len(self.syllables):
+        if self.num_notes >= len(self.syllables):
             print("Can't add any more notes!")
             return
         syllable = self.syllables[len(self.notes)]
         phonemes = self.phonemes[len(self.notes)]
         n = Note(octave, pitch, length, syllable, phonemes)
         self.notes.append(n)
+        self.num_notes = self.num_notes + 1
 
     def addRest(self, length):
-        if len(self.notes) >= len(self.syllables):
+        if self.num_notes >= len(self.syllables):
             print("Can't add any more notes!")
             return
         syllable = ""
