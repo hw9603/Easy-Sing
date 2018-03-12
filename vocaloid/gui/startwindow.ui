@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -38,7 +41,7 @@
      <height>1080</height>
     </size>
    </property>
-   <layout class="QGridLayout" name="gridLayout" rowstretch="2,2,2,10" columnstretch="10,3,10">
+   <layout class="QGridLayout" name="gridLayout" rowstretch="1,2,2,2" columnstretch="10,5,10">
     <item row="2" column="0" alignment="Qt::AlignRight|Qt::AlignTop">
      <widget class="QLabel" name="fileLabel">
       <property name="minimumSize">
@@ -58,7 +61,7 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="2" alignment="Qt::AlignTop">
+    <item row="0" column="2" alignment="Qt::AlignVCenter">
      <widget class="QLabel" name="label_2">
       <property name="font">
        <font>
@@ -122,7 +125,7 @@ File</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1" alignment="Qt::AlignHCenter|Qt::AlignTop">
+    <item row="0" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
      <widget class="QLabel" name="label">
       <property name="maximumSize">
        <size>
@@ -143,11 +146,32 @@ File</string>
     </item>
     <item row="1" column="2" rowspan="2" alignment="Qt::AlignLeft|Qt::AlignTop">
      <widget class="QTextEdit" name="textEdit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
       <property name="minimumSize">
        <size>
         <width>340</width>
         <height>360</height>
        </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="sizeIncrement">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::TabFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">font: 24pt &quot;Arial&quot;;</string>
@@ -161,7 +185,7 @@ p, li { white-space: pre-wrap; }
       </property>
      </widget>
     </item>
-    <item row="0" column="0" alignment="Qt::AlignRight|Qt::AlignTop">
+    <item row="0" column="0" alignment="Qt::AlignRight|Qt::AlignVCenter">
      <widget class="QLabel" name="label_3">
       <property name="minimumSize">
        <size>

@@ -1,4 +1,5 @@
 import os
+import re
 
 def replace():
 	folder = "./vocaloid/gui/"
@@ -8,6 +9,7 @@ def replace():
 	    origin_str = "self.retranslateUi(MainWindow)"
 	    new_str = "Ui_MainWindow.retranslateUi(self, MainWindow)"
 	    content = f.read().replace(origin_str, new_str)
+	    content = re.sub(r'MainWindow\.resize\(\d*, \d*\)\s*' , '',content)
 	    f.close()
 	    os.remove(folder + file + ".py")
 	    f = open(folder + file + ".py", "w")
