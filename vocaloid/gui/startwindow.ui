@@ -98,7 +98,7 @@ Lyrics File</string>
          </widget>
         </item>
         <item alignment="Qt::AlignRight">
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="recordButton">
           <property name="minimumSize">
            <size>
             <width>340</width>

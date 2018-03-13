@@ -48,11 +48,11 @@ class Ui_MainWindow(object):
         self.fileLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.fileLabel.setObjectName("fileLabel")
         self.verticalLayout_2.addWidget(self.fileLabel, 0, QtCore.Qt.AlignRight)
-        self.pushButton = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton.setMinimumSize(QtCore.QSize(340, 160))
-        self.pushButton.setStyleSheet("font: 36pt \"Arial\";")
-        self.pushButton.setObjectName("pushButton")
-        self.verticalLayout_2.addWidget(self.pushButton, 0, QtCore.Qt.AlignRight)
+        self.recordButton = QtWidgets.QPushButton(self.centralWidget)
+        self.recordButton.setMinimumSize(QtCore.QSize(340, 160))
+        self.recordButton.setStyleSheet("font: 36pt \"Arial\";")
+        self.recordButton.setObjectName("recordButton")
+        self.verticalLayout_2.addWidget(self.recordButton, 0, QtCore.Qt.AlignRight)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem)
         self.verticalLayout_2.setStretch(0, 1)
@@ -115,7 +115,7 @@ class Ui_MainWindow(object):
         self.chooseButton.setText(_translate("MainWindow", "Choose\n"
 "Lyrics File"))
         self.fileLabel.setText(_translate("MainWindow", "<html><head/><body><p>No file chosen.</p></body></html>"))
-        self.pushButton.setText(_translate("MainWindow", "Record Lyrics"))
+        self.recordButton.setText(_translate("MainWindow", "Record Lyrics"))
         self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

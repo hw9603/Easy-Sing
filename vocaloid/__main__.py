@@ -61,9 +61,14 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.curr_len = 2
         self.num = 0
         self.chooseButton.clicked.connect(self.openFile)
+        self.recordButton.clicked.connect(self.recordSound)
         self.nextButton.clicked.connect(self.loadFile)
         self.backButton.clicked.connect(self.onBackButtonClick)
 
+    def recordSound(self):
+    	# TODO to be added
+    	self.lyrics = "something"
+    	self.textEdit.setText(self.lyrics)
 
     def openFile(self):
         options = QFileDialog.Options()
