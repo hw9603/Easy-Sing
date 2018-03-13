@@ -24,6 +24,8 @@ setup(
         'python-rtmidi==1.1.0',
         'PyQt5==5.10.0',
         'pyqt-distutils==0.7.3',
-        'qdarkstyle==2.5.1'
+        'qdarkstyle==2.5.1',
+        'pyaudio==0.2.11',
+        'google-cloud-speech'
     ],
 )

@@ -1,4 +1,4 @@
-import sys, os
+import sys, os, io
 # sys.path.insert(0,'../')
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QImage, QPalette, QBrush, QKeyEvent
@@ -17,8 +17,18 @@ from vocaloid.song import *
 from vocaloid.midiMonitor import *
 
 import qdarkstyle
+import pyaudio
+import wave
+from threading import Thread
+import subprocess
 
 MAX_NUM_SYLLABLES = 36
+# for audio recording
+CHUNK = 1024 
+FORMAT = pyaudio.paInt16 #paInt8
+CHANNELS = 1
+RATE = 16000 #sample rate
+WAVE_OUTPUT_FILENAME = "./tmp/recorded.wav"
 
 class MainWindow(QMainWindow, MainUI, QRunnable):
     def __init__(self):
@@ -33,6 +43,9 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.curr_len = 2 # It's a quarter note.
         self.threadpool = QThreadPool()
         self.num = 0 # This is for positioning note display.
+        # for recording:
+        self.onRecording = False
+        self.recordThread = 0
         if not os.path.exists("./tmp"):
             os.makedirs("./tmp")
 
@@ -41,6 +54,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.setupUi2(self)
         self.chooseButton.clicked.connect(self.openFile)
         self.nextButton.clicked.connect(self.loadFile)
+        self.recordButton.clicked.connect(self.recordSound)
         self.backButton.clicked.connect(self.onBackButtonClick)
 
 
@@ -63,14 +77,75 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.curr_len = 2
         self.num = 0
         self.chooseButton.clicked.connect(self.openFile)
-        self.recordButton.clicked.connect(self.recordSound)
         self.nextButton.clicked.connect(self.loadFile)
+        self.recordButton.clicked.connect(self.recordSound)
         self.backButton.clicked.connect(self.onBackButtonClick)
 
     def recordSound(self):
-    	# TODO to be added
-    	self.lyrics = "something"
-    	self.textEdit.setText(self.lyrics)
+        # TODO to be added
+        if self.onRecording:
+            self.onRecording = False
+            self.recordThread.join()
+            if not os.path.isfile(WAVE_OUTPUT_FILENAME):
+                self.textEdit.setText("Error! Check whether the recorded audio exist.")
+                return
+            self.lyrics = self.ask_google_for_text(WAVE_OUTPUT_FILENAME)
+            self.textEdit.setText(self.lyrics)
+        else:
+            self.onRecording = True
+            self.recordThread = Thread(target = self.record_and_save_to_file, args = ( ))
+            self.recordThread.start()
+
+    def record_and_save_to_file(self):
+        p = pyaudio.PyAudio()
+        stream = p.open(format=FORMAT,
+                        channels=CHANNELS,
+                        rate=RATE,
+                        input=True,
+                        frames_per_buffer=CHUNK) #buffer
+
+        print("* recording")
+        self.recordButton.setStyleSheet("background-color: #881111;font: 36pt 'Arial';")
+        self.recordButton.setText("Recording...")
+        frames = []
+        while self.onRecording:
+            data = stream.read(CHUNK)
+            frames.append(data) # 2 bytes(16 bits) per channel
+        print("* done recording")
+        self.recordButton.setStyleSheet("background-color: #31363b;font: 36pt 'Arial';")
+        self.recordButton.setText("Record Lyrics")
+        stream.stop_stream()
+        stream.close()
+        p.terminate()
+        wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
+        wf.setnchannels(CHANNELS)
+        wf.setsampwidth(p.get_sample_size(FORMAT))
+        wf.setframerate(RATE)
+        wf.writeframes(b''.join(frames))
+        wf.close()
+
+    def ask_google_for_text(self, speech_file):
+        """Transcribe the given audio file."""
+        from google.cloud import speech
+        from google.cloud.speech import enums
+        from google.cloud.speech import types
+        client = speech.SpeechClient()
+
+        with io.open(speech_file, 'rb') as audio_file:
+            content = audio_file.read()
+
+        audio = types.RecognitionAudio(content=content)
+        config = types.RecognitionConfig(
+            encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
+            sample_rate_hertz=16000,
+            language_code='en-US')
+        response = client.recognize(config, audio)
+        # Each result is for a consecutive portion of the audio. Iterate through
+        # them to get the transcripts for the entire audio file.
+        for result in response.results:
+            # The first alternative is the most likely one for this portion.
+            print('Transcript: {}'.format(result.alternatives[0].transcript))
+            return result.alternatives[0].transcript
 
     def openFile(self):
         options = QFileDialog.Options()

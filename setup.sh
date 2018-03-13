@@ -12,15 +12,18 @@ command -v pip3 >/dev/null 2>&1 || \
 echo -e "${GREEN}Installing python system dependency${NC}"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
         # ...
+        echo -e "${GREEN}System recognized as Ubuntu${NC}"
         command -v apt-get >/dev/null 2>&1 || \
             { echo -e >&2 "${RED}I require apt-get but it's not installed.  Aborting.${NC}"; exit 1; }
         sudo apt-get -y install libjack-dev
         sudo apt-get install libasound2-dev
+        sudo apt-get install python-pyaudio python3-pyaudio
 elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX
-        echo -e "${RED}Mac OSX${NC}"
-        # command -v brew >/dev/null 2>&1 || \
-        #     { echo -e >&2 "${RED}I require brew but it's not installed.  Aborting."; exit 1; }
+        echo -e "${RED}System recognized as Mac OSX${NC}"
+        command -v brew >/dev/null 2>&1 || \
+            { echo -e >&2 "${RED}I require brew but it's not installed.  Aborting."; exit 1; }
+        brew install portaudio
 elif [[ "$OSTYPE" == "cygwin" ]]; then
         # POSIX compatibility layer and Linux environment emulation for Windows
         echo -e "${RED}Did't tested on Linux on Windows, try at your own risk.${NC}"
