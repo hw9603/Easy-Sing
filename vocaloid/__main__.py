@@ -149,7 +149,11 @@ class MidiListener(QRunnable):
 
     @pyqtSlot()
     def run(self):
-        for message in PortServer('localhost', 8080):
+        try:
+            server = PortServer('localhost', 8080)
+        except:
+            return
+        for message in server:
             if message.type == 'note_on':
                 if self.num > 35:
                     continue

@@ -8,13 +8,13 @@ from vocaloid.syllablesParser import *
 def convertToMilliseconds(length):
     """Convert note length to ms. Currently assumes bpm of 120."""
     if length.value == 1:
-        return 250
+        return 125
     if length.value == 2:
-        return 500
+        return 250
     if length.value == 3:
-        return 1000
+        return 500
     if length.value == 4:
-        return 2000
+        return 1000
 
 def convertPitchToABS(pitch):
     # pitches ordered according to experimental correspondence data

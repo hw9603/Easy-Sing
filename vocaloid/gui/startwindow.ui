@@ -171,7 +171,7 @@ File</string>
        </size>
       </property>
       <property name="focusPolicy">
-       <enum>Qt::TabFocus</enum>
+       <enum>Qt::StrongFocus</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">font: 24pt &quot;Arial&quot;;</string>

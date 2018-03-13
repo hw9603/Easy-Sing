@@ -74,7 +74,7 @@ class Ui_MainWindow(object):
         self.textEdit.setMinimumSize(QtCore.QSize(340, 360))
         self.textEdit.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.textEdit.setSizeIncrement(QtCore.QSize(0, 0))
-        self.textEdit.setFocusPolicy(QtCore.Qt.TabFocus)
+        self.textEdit.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.textEdit.setStyleSheet("font: 24pt \"Arial\";")
         self.textEdit.setObjectName("textEdit")
         self.gridLayout.addWidget(self.textEdit, 1, 2, 2, 1, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
