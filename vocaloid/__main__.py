@@ -30,6 +30,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.song = Song("")
         self.curr_len = 2 # It's a quarter note.
         self.threadpool = QThreadPool()
+        self.num = 0
         if not os.path.exists("./tmp"):
             os.makedirs("./tmp")
 
@@ -53,6 +54,12 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
     def onBack2ButtonClick(self):
         self.setupUi2(self)
+        self.lyrics = ""
+        self.syllables = []
+        self.lyricsFilePath = ""
+        self.song = Song("")
+        self.curr_len = 2
+        self.num = 0
         self.chooseButton.clicked.connect(self.openFile)
         self.nextButton.clicked.connect(self.loadFile)
         self.backButton.clicked.connect(self.onBackButtonClick)
@@ -101,6 +108,24 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.generateButton.clicked.connect(self.generateSong)
         self.playButton.clicked.connect(self.playSong)
         self.playButton.setDisabled(True)
+        self.restartButton.clicked.connect(self.restartProgram)
+        self.exitButton.clicked.connect(self.exitProgram)
+
+
+    def restartProgram(self):
+        self.setupUi(self)
+        self.tutorialButton.clicked.connect(self.onTutorialButtonClick)
+        self.startButton.clicked.connect(self.onStartButtonClick)
+        self.lyricsFilePath = ""
+        self.lyrics = ""
+        self.syllables = []
+        self.song = Song("")
+        self.curr_len = 2 # It's a quarter note.
+        self.num = 0
+
+
+    def exitProgram(self):
+        sys.exit()
 
 
     def generateSong(self):
@@ -144,7 +169,6 @@ class MidiListener(QRunnable):
     def __init__(self, window_in):
         super().__init__()
         self.window = window_in
-        self.num = 0
 
 
     @pyqtSlot()
@@ -152,12 +176,13 @@ class MidiListener(QRunnable):
         try:
             server = PortServer('localhost', 8080)
         except:
+            print("midi listener already up!")
             return
         for message in server:
             if message.type == 'note_on':
-                if self.num > 35:
+                if self.window.num > 35:
                     continue
-                label = getattr(self.window, "label_" + str(self.num))
+                label = getattr(self.window, "label_" + str(self.window.num))
                 C0 = 24
                 octave = (message.note - C0) // 12
                 pitch = (message.note - C0) % 12
@@ -168,7 +193,7 @@ class MidiListener(QRunnable):
                 syllable = label.text()
                 note_info = syllable + "\n" + notation[pitch] + " " + str(octave) + "\n" + len_notation[length - 1]
                 label.setText(note_info)
-                self.num += 1
+                self.window.num += 1
 
 
 def main():
