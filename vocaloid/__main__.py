@@ -18,6 +18,8 @@ from vocaloid.midiMonitor import *
 
 import qdarkstyle
 
+MAX_NUM_SYLLABLES = 36
+
 class MainWindow(QMainWindow, MainUI, QRunnable):
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -30,7 +32,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.song = Song("")
         self.curr_len = 2 # It's a quarter note.
         self.threadpool = QThreadPool()
-        self.num = 0
+        self.num = 0 # This is for positioning note display.
         if not os.path.exists("./tmp"):
             os.makedirs("./tmp")
 
@@ -92,7 +94,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
     def renderSyllables(self, syllables):
         for i, syl in enumerate(syllables):
             # Sorry, the UI now can only handle 35 syllables...
-            if i > 35:
+            if i >= MAX_NUM_SYLLABLES:
                 print("too many syllables in the lyrics")
                 break
             label = getattr(self, "label_%i" % i)
@@ -154,12 +156,23 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
     def playSong(self):
         QSound.play(self.soundfilename)
 
+
     def keyPressEvent(self, event):
         if type(event) == QKeyEvent:
             if event.key() == Qt.Key_D and self.curr_len < 4:
                 self.curr_len += 1
             elif event.key() == Qt.Key_H and self.curr_len > 1:
                 self.curr_len -= 1
+            elif event.key() == Qt.Key_R:
+                prev_label = getattr(self, "label_" + str(self.num))
+                prev_text = prev_label.text()
+                prev_label.setText("Rest")
+                for i in range(self.num + 1, MAX_NUM_SYLLABLES):
+                    label = getattr(self, "label_" + str(i))
+                    next_text = label.text()
+                    label.setText(prev_text)
+                    prev_text = next_text
+                self.num += 1
             event.accept()
         else:
             event.ignore()
@@ -180,7 +193,7 @@ class MidiListener(QRunnable):
             return
         for message in server:
             if message.type == 'note_on':
-                if self.window.num > 35:
+                if self.window.num >= MAX_NUM_SYLLABLES:
                     continue
                 label = getattr(self.window, "label_" + str(self.window.num))
                 C0 = 24
