@@ -17,6 +17,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
             { echo -e >&2 "${RED}I require apt-get but it's not installed.  Aborting.${NC}"; exit 1; }
         sudo apt-get -y install libjack-dev
         sudo apt-get install libasound2-dev
+        sudo apt-get install libjack-jackd2-dev portaudio19-dev
         sudo apt-get install python-pyaudio python3-pyaudio
 elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX

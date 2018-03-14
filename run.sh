@@ -8,7 +8,7 @@ fi
 ./marytts/target/marytts-5.3-SNAPSHOT/bin/marytts-server &
 # $PID is the pid of marytts
 PID=$!
-
+export GOOGLE_APPLICATION_CREDENTIALS="./vocaloid/user_cridential.json"
 # modify ui before run the main tool. 
 if [ $# -gt 0 ]; then
 	if [ $1 = 'ui' ]; then
