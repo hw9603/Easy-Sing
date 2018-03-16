@@ -19,6 +19,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         sudo apt-get install libasound2-dev
         sudo apt-get install libjack-jackd2-dev portaudio19-dev
         sudo apt-get install python-pyaudio python3-pyaudio
+        wget http://download.linuxaudio.org/lilypond/binaries/linux-64/lilypond-2.18.2-1.linux-64.sh
+        sh lilypond-2.18.2-1.linux-64.sh
 elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX
         echo -e "${RED}System recognized as Mac OSX${NC}"
