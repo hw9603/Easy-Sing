@@ -26,6 +26,8 @@ setup(
         'pyqt-distutils==0.7.3',
         'qdarkstyle==2.5.1',
         'pyaudio==0.2.11',
-        'google-cloud-speech'
+        'google-cloud-speech',
+        'pdf2image==0.1.8',
+        'pillow==5.0.0',
     ],
 )
