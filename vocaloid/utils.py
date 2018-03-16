@@ -18,3 +18,7 @@ def get_lyrics_from_filepath(filepath):
     lyrics_file = open(filepath)
     lyrics = lyrics_file.read()
     return lyrics
+
+def write_to_filepath(filepath, content):
+    lily_file = open(filepath, "w")
+    lily_file.write(content)
