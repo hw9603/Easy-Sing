@@ -25,6 +25,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
         command -v brew >/dev/null 2>&1 || \
             { echo -e >&2 "${RED}I require brew but it's not installed.  Aborting."; exit 1; }
         brew install portaudio
+        brew cask install lilypond
 elif [[ "$OSTYPE" == "cygwin" ]]; then
         # POSIX compatibility layer and Linux environment emulation for Windows
         echo -e "${RED}Did't tested on Linux on Windows, try at your own risk.${NC}"

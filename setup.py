@@ -26,6 +26,7 @@ setup(
         'pyqt-distutils==0.7.3',
         'qdarkstyle==2.5.1',
         'pyaudio==0.2.11',
-        'google-cloud-speech'
+        'google-cloud-speech',
+        'abjad==2.21'
     ],
 )
