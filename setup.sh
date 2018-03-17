@@ -28,6 +28,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
             { echo -e >&2 "${RED}I require brew but it's not installed.  Aborting."; exit 1; }
         brew install portaudio
         brew cask install lilypond
+        brew install poppler
         export PATH="$PATH:/Applications/LilyPond.app/Contents/Resources/bin/"
 elif [[ "$OSTYPE" == "cygwin" ]]; then
         # POSIX compatibility layer and Linux environment emulation for Windows

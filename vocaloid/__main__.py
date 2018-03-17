@@ -248,7 +248,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         if type(event) == QKeyEvent:
             if event.key() == Qt.Key_D and self.curr_len < 4:
                 self.curr_len += 1
-            elif event.key() == Qt.Key_H and self.curr_len > 1:
+            elif event.key() == Qt.Key_W and self.curr_len > 1:
                 self.curr_len -= 1
             elif event.key() == Qt.Key_R:
                 # prev_label = getattr(self, "label_" + str(self.num))

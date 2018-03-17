@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/musicwindow.ui'
+# Form implementation generated from reading ui file '/Users/zihanli/program/498-Vocaloid/vocaloid/gui/musicwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.10
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -34,19 +34,6 @@ class Ui_MainWindow(object):
         self.picLabel.setGeometry(QtCore.QRect(0, 0, 771, 1090))
         self.picLabel.setText("")
         self.picLabel.setObjectName("picLabel")
-        self.horizontalScrollBar = QtWidgets.QScrollBar(self.scrollAreaWidgetContents)
-        self.horizontalScrollBar.setGeometry(QtCore.QRect(0, 380, 761, 20))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.horizontalScrollBar.sizePolicy().hasHeightForWidth())
-        self.horizontalScrollBar.setSizePolicy(sizePolicy)
-        self.horizontalScrollBar.setOrientation(QtCore.Qt.Horizontal)
-        self.horizontalScrollBar.setObjectName("horizontalScrollBar")
-        self.verticalScrollBar = QtWidgets.QScrollBar(self.scrollAreaWidgetContents)
-        self.verticalScrollBar.setGeometry(QtCore.QRect(760, 0, 16, 401))
-        self.verticalScrollBar.setOrientation(QtCore.Qt.Vertical)
-        self.verticalScrollBar.setObjectName("verticalScrollBar")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 0, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout)

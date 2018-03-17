@@ -62,38 +62,6 @@
            <string/>
           </property>
          </widget>
-         <widget class="QScrollBar" name="horizontalScrollBar">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>380</y>
-            <width>761</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-         <widget class="QScrollBar" name="verticalScrollBar">
-          <property name="geometry">
-           <rect>
-            <x>760</x>
-            <y>0</y>
-            <width>16</width>
-            <height>401</height>
-           </rect>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-         </widget>
         </widget>
        </widget>
       </item>
