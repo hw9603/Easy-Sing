@@ -75,7 +75,8 @@ class Song:
         self.num_notes = self.num_notes + 1
         notation_map = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
         octave_map = ['', '\'', '\'\''] # octave 2, 3, 4
-        lily_note = notation_map[pitch] + octave_map[octave - 2] + str(length)
+        length_map = ['8', '4', '2', '1']
+        lily_note = notation_map[pitch] + octave_map[octave - 2] + length_map[length - 1]
         print(lily_note)
         self.lily_notes.append(lily_note)
         self.convertToLilyPond()
@@ -88,7 +89,8 @@ class Song:
         phonemes = []
         self.num_rest += 1
         n = Note(0, 0, length, syllable, phonemes, True)
-        lily_note = 'r' + str(length)
+        length_map = ['8', '4', '2', '1']
+        lily_note = 'r' + length_map[length - 1]
         self.notes.append(n)
         self.lily_notes.append(lily_note)
         self.convertToLilyPond()

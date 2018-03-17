@@ -246,6 +246,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
     def keyPressEvent(self, event):
         if type(event) == QKeyEvent:
+            print(self.curr_len)
             if event.key() == Qt.Key_D and self.curr_len < 4:
                 self.curr_len += 1
             elif event.key() == Qt.Key_W and self.curr_len > 1:
