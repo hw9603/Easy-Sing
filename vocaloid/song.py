@@ -49,6 +49,7 @@ class Song:
         self.notes = []
         self.lyrics = ""
         self.lily_notes = []
+        self.num_rest = 0
         self.syllables = parse_syllables(lyrics)
         self.phonemes = parse_phonemes(get_phonemes(get_ssml(lyrics)))
 
@@ -63,8 +64,8 @@ class Song:
         if self.num_notes >= len(self.syllables):
             print("Can't add any more notes!")
             return
-        syllable = self.syllables[len(self.notes)]
-        phonemes = self.phonemes[len(self.notes)]
+        syllable = self.syllables[len(self.notes) - self.num_rest]
+        phonemes = self.phonemes[len(self.notes) - self.num_rest]
         if octave < 2:
             octave = 2
         elif octave > 4:
@@ -85,6 +86,7 @@ class Song:
             return
         syllable = ""
         phonemes = []
+        self.num_rest += 1
         n = Note(0, 0, length, syllable, phonemes, True)
         lily_note = 'r' + str(length)
         self.notes.append(n)
