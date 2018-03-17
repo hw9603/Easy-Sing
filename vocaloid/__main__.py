@@ -159,10 +159,10 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
 
     def loadFile(self):
-        if self.lyricsFilePath:
-            self.lyrics = get_lyrics_from_filepath(self.lyricsFilePath)
-        else:
-            self.lyrics = self.textEdit.toPlainText()
+        # if self.lyricsFilePath:
+        #     self.lyrics = get_lyrics_from_filepath(self.lyricsFilePath)
+        # else:
+        self.lyrics = self.textEdit.toPlainText()
         self.song.addLyrics(self.lyrics)
         self.syllables = parse_syllables(self.lyrics)
         # self.setupUi3(self)
