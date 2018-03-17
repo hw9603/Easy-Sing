@@ -11,6 +11,10 @@ import tempfile
 from PIL import Image
 import os
 
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QWidget
+
+from vocaloid.__main__ import *
 
 def convertToMilliseconds(length):
     """Convert note length to ms. Currently assumes bpm of 120."""
@@ -38,7 +42,9 @@ def convertPitchToABS(pitch):
     return pitches[pitch.value]
 
 class Song:
-    def __init__(self, lyrics):
+    def __init__(self, lyrics, window_in):
+        super().__init__()
+        self.window = window_in
         self.num_notes = 0
         self.notes = []
         self.lyrics = ""
@@ -138,7 +144,7 @@ class Song:
         # c - octave 2; c' - octave 3; c'' - octave 4
         # "cis4 bes'8. a'16 g'4. f'8 e'4 d'4 c'2 c''2"
         melody = ' '.join(self.lily_notes)
-        lyrics = self.lyrics
+        lyrics = ' '.join(self.syllables)
         lily_string = musicOne + melody + verseOne + lyrics + score
         write_to_filepath("tmp/song.ly", lily_string)
         os.system("lilypond --output='tmp/' tmp/song.ly")
@@ -147,8 +153,14 @@ class Song:
     def displayMusic(self):
         with tempfile.TemporaryDirectory() as path:
             images_from_path = convert_from_path('tmp/song.pdf', output_folder=path)
-        images_from_path[0].show()
+        # images_from_path[0].show()
         images_from_path[0].save("tmp/song.jpg", "JPEG") # Assume there is only one page in the pdf file.
+        self.window.picLabel.setPixmap(QPixmap("tmp/song.jpg"))
+
+        self.window.picLabel.adjustSize()
+        self.window.picLabel.setScaledContents(True)
+        self.window.picLabel.setSizePolicy( QSizePolicy.Ignored, QSizePolicy.Ignored)
+        self.window.picLabel.show()
 
 # convertToLilyPond()
 

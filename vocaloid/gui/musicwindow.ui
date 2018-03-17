@@ -43,7 +43,13 @@
            <height>400</height>
           </rect>
          </property>
-         <widget class="QGraphicsView" name="graphicsView">
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
+         <widget class="QLabel" name="picLabel">
           <property name="geometry">
            <rect>
             <x>0</x>
@@ -51,6 +57,41 @@
             <width>771</width>
             <height>1090</height>
            </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QScrollBar" name="horizontalScrollBar">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>380</y>
+            <width>761</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="QScrollBar" name="verticalScrollBar">
+          <property name="geometry">
+           <rect>
+            <x>760</x>
+            <y>0</y>
+            <width>16</width>
+            <height>401</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
          </widget>
         </widget>
@@ -61,7 +102,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1,2">
       <item alignment="Qt::AlignRight|Qt::AlignTop">
-       <widget class="QPushButton" name="back2Button">
+       <widget class="QPushButton" name="back5Button">
         <property name="minimumSize">
          <size>
           <width>340</width>
@@ -90,7 +131,7 @@
        </spacer>
       </item>
       <item alignment="Qt::AlignLeft|Qt::AlignTop">
-       <widget class="QPushButton" name="next2Button">
+       <widget class="QPushButton" name="next5Button">
         <property name="minimumSize">
          <size>
           <width>340</width>

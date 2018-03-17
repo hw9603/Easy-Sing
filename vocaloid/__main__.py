@@ -24,7 +24,7 @@ import subprocess
 
 MAX_NUM_SYLLABLES = 36
 # for audio recording
-CHUNK = 1024 
+CHUNK = 1024
 FORMAT = pyaudio.paInt16 #paInt8
 CHANNELS = 1
 RATE = 16000 #sample rate
@@ -39,7 +39,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.lyricsFilePath = ""
         self.lyrics = ""
         self.syllables = []
-        self.song = Song("")
+        self.song = Song("", self)
         self.curr_len = 2 # It's a quarter note.
         self.threadpool = QThreadPool()
         self.num = 0 # This is for positioning note display.
@@ -73,7 +73,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.lyrics = ""
         self.syllables = []
         self.lyricsFilePath = ""
-        self.song = Song("")
+        self.song = Song("", self)
         self.curr_len = 2
         self.num = 0
         self.chooseButton.clicked.connect(self.openFile)
@@ -165,10 +165,17 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
             self.lyrics = self.textEdit.toPlainText()
         self.song.addLyrics(self.lyrics)
         self.syllables = parse_syllables(self.lyrics)
-        self.setupUi3(self)
-        self.back2Button.clicked.connect(self.onBack2ButtonClick)
-        self.next2Button.clicked.connect(self.onNext2ButtonClick)
-        self.renderSyllables(self.syllables)
+        # self.setupUi3(self)
+        # self.back2Button.clicked.connect(self.onBack2ButtonClick)
+        # self.next2Button.clicked.connect(self.onNext2ButtonClick)
+        # self.renderSyllables(self.syllables)
+        self.setupUi5(self)
+        self.back5Button.clicked.connect(self.onBack2ButtonClick)
+        self.next5Button.clicked.connect(self.onNext2ButtonClick)
+        midiListener = MidiListener(self)
+        self.threadpool.start(midiListener)
+        midiMonitor = MidiMonitor()
+        self.threadpool.start(midiMonitor)
 
 
     def renderSyllables(self, syllables):
@@ -201,7 +208,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.lyricsFilePath = ""
         self.lyrics = ""
         self.syllables = []
-        self.song = Song("")
+        self.song = Song("", self)
         self.curr_len = 2 # It's a quarter note.
         self.num = 0
 
@@ -244,14 +251,14 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
             elif event.key() == Qt.Key_H and self.curr_len > 1:
                 self.curr_len -= 1
             elif event.key() == Qt.Key_R:
-                prev_label = getattr(self, "label_" + str(self.num))
-                prev_text = prev_label.text()
-                prev_label.setText("Rest")
-                for i in range(self.num + 1, MAX_NUM_SYLLABLES):
-                    label = getattr(self, "label_" + str(i))
-                    next_text = label.text()
-                    label.setText(prev_text)
-                    prev_text = next_text
+                # prev_label = getattr(self, "label_" + str(self.num))
+                # prev_text = prev_label.text()
+                # prev_label.setText("Rest")
+                # for i in range(self.num + 1, MAX_NUM_SYLLABLES):
+                    # label = getattr(self, "label_" + str(i))
+                    # next_text = label.text()
+                    # label.setText(prev_text)
+                    # prev_text = next_text
                 self.num += 1
             event.accept()
         else:
@@ -275,7 +282,7 @@ class MidiListener(QRunnable):
             if message.type == 'note_on':
                 if self.window.num >= MAX_NUM_SYLLABLES:
                     continue
-                label = getattr(self.window, "label_" + str(self.window.num))
+                # label = getattr(self.window, "label_" + str(self.window.num))
                 C0 = 24
                 octave = (message.note - C0) // 12
                 pitch = (message.note - C0) % 12
@@ -283,9 +290,9 @@ class MidiListener(QRunnable):
                 self.window.song.addNote(octave, pitch, length)
                 notation = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
                 len_notation = ["eighth", "quarter", "half", "whole"]
-                syllable = label.text()
-                note_info = syllable + "\n" + notation[pitch] + " " + str(octave) + "\n" + len_notation[length - 1]
-                label.setText(note_info)
+                # syllable = label.text()
+                # note_info = syllable + "\n" + notation[pitch] + " " + str(octave) + "\n" + len_notation[length - 1]
+                # label.setText(note_info)
                 self.window.num += 1
 
 

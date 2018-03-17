@@ -3,7 +3,7 @@ import re
 
 def replace():
 	folder = "./vocaloid/gui/"
-	ui_files = ["mainwindow_ui", "startwindow_ui", "melodywindow_ui", "generatewindow_ui"]
+	ui_files = ["mainwindow_ui", "startwindow_ui", "melodywindow_ui", "generatewindow_ui", "musicwindow_ui"]
 	for file in ui_files:
 	    f = open(folder + file + ".py", "r")
 	    origin_str = "self.retranslateUi(MainWindow)"
