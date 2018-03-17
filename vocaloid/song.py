@@ -89,7 +89,7 @@ class Song:
         lily_note = 'r' + str(length)
         self.notes.append(n)
         self.lily_notes.append(lily_note)
-        self.convertToLilyPond
+        self.convertToLilyPond()
 
     def addLyrics(self, line):
         self.lyrics = line
