@@ -86,7 +86,10 @@ class Song:
         syllable = ""
         phonemes = []
         n = Note(0, 0, length, syllable, phonemes, True)
+        lily_note = 'r' + str(length)
         self.notes.append(n)
+        self.lily_notes.append(lily_note)
+        self.convertToLilyPond
 
     def addLyrics(self, line):
         self.lyrics = line
@@ -155,11 +158,10 @@ class Song:
             images_from_path = convert_from_path('tmp/song.pdf', output_folder=path)
         # images_from_path[0].show()
         images_from_path[0].save("tmp/song.jpg", "JPEG") # Assume there is only one page in the pdf file.
-        self.window.picLabel.setPixmap(QPixmap("tmp/song.jpg"))
-
+        pixmap = QPixmap("tmp/song.jpg")
+        # pixmap = pixmap.scaledToWidth(self.window.picLabel.width())
+        self.window.picLabel.setPixmap(pixmap)
         self.window.picLabel.adjustSize()
-        self.window.picLabel.setScaledContents(True)
-        self.window.picLabel.setSizePolicy( QSizePolicy.Ignored, QSizePolicy.Ignored)
         self.window.picLabel.show()
 
 # convertToLilyPond()

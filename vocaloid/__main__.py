@@ -250,7 +250,8 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
                 self.curr_len += 1
             elif event.key() == Qt.Key_W and self.curr_len > 1:
                 self.curr_len -= 1
-            elif event.key() == Qt.Key_R:
+            elif event.key() == Qt.Key_G:
+                self.song.addRest(self.curr_len)
                 # prev_label = getattr(self, "label_" + str(self.num))
                 # prev_text = prev_label.text()
                 # prev_label.setText("Rest")
