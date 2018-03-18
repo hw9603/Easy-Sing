@@ -265,8 +265,6 @@ class MidiListener(QRunnable):
             return
         for message in server:
             if message.type == 'note_on':
-                if self.window.num >= MAX_NUM_SYLLABLES:
-                    continue
                 C0 = 24
                 octave = (message.note - C0) // 12
                 pitch = (message.note - C0) % 12
