@@ -22,6 +22,8 @@ import wave
 from threading import Thread
 import subprocess
 
+import simpleaudio as sa
+
 MAX_NUM_SYLLABLES = 36
 # for audio recording
 CHUNK = 1024
@@ -42,7 +44,6 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.song = Song("", self)
         self.curr_len = 2 # It's a quarter note.
         self.threadpool = QThreadPool()
-        self.num = 0 # This is for positioning note display.
         # for recording:
         self.onRecording = False
         self.recordThread = 0
@@ -75,7 +76,6 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.lyricsFilePath = ""
         self.song = Song("", self)
         self.curr_len = 2
-        self.num = 0
         self.chooseButton.clicked.connect(self.openFile)
         self.nextButton.clicked.connect(self.loadFile)
         self.recordButton.clicked.connect(self.recordSound)
@@ -159,16 +159,9 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
 
     def loadFile(self):
-        # if self.lyricsFilePath:
-        #     self.lyrics = get_lyrics_from_filepath(self.lyricsFilePath)
-        # else:
         self.lyrics = self.textEdit.toPlainText()
         self.song.addLyrics(self.lyrics)
         self.syllables = parse_syllables(self.lyrics)
-        # self.setupUi3(self)
-        # self.back2Button.clicked.connect(self.onBack2ButtonClick)
-        # self.next2Button.clicked.connect(self.onNext2ButtonClick)
-        # self.renderSyllables(self.syllables)
         self.setupUi5(self)
         self.back5Button.clicked.connect(self.onBack2ButtonClick)
         self.next5Button.clicked.connect(self.onNext2ButtonClick)
@@ -210,7 +203,6 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.syllables = []
         self.song = Song("", self)
         self.curr_len = 2 # It's a quarter note.
-        self.num = 0
 
 
     def exitProgram(self):
@@ -253,15 +245,6 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
                 self.curr_len -= 1
             elif event.key() == Qt.Key_G:
                 self.song.addRest(self.curr_len)
-                # prev_label = getattr(self, "label_" + str(self.num))
-                # prev_text = prev_label.text()
-                # prev_label.setText("Rest")
-                # for i in range(self.num + 1, MAX_NUM_SYLLABLES):
-                    # label = getattr(self, "label_" + str(i))
-                    # next_text = label.text()
-                    # label.setText(prev_text)
-                    # prev_text = next_text
-                self.num += 1
             event.accept()
         else:
             event.ignore()
@@ -284,18 +267,18 @@ class MidiListener(QRunnable):
             if message.type == 'note_on':
                 if self.window.num >= MAX_NUM_SYLLABLES:
                     continue
-                # label = getattr(self.window, "label_" + str(self.window.num))
                 C0 = 24
                 octave = (message.note - C0) // 12
                 pitch = (message.note - C0) % 12
                 length = self.window.curr_len
+                if octave > 3:
+                    octave = 3
+                elif octave < 1:
+                    octave = 1
                 self.window.song.addNote(octave, pitch, length)
-                notation = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
-                len_notation = ["eighth", "quarter", "half", "whole"]
-                # syllable = label.text()
-                # note_info = syllable + "\n" + notation[pitch] + " " + str(octave) + "\n" + len_notation[length - 1]
-                # label.setText(note_info)
-                self.window.num += 1
+                notation_map = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
+                wave_obj = sa.WaveObject.from_wave_file("library/" + notation_map[pitch] + str(octave) + ".wav")
+                play_obj = wave_obj.play()
 
 
 def main():

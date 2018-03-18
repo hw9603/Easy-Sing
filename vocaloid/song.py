@@ -144,7 +144,7 @@ class Song:
         musicOne = "musicOne = {\n\t"
         verseOne = "\n}\nverseOne = \lyricmode {\n\t"
         score = "\n}\n\score {\n\t<<\n\t\t"
-        score += "\\new Voice = \"one\" {\n\t\t\t\\time 2/4\n\t\t\t\musicOne\n\t\t}\n\t\t"
+        score += "\\new Voice = \"one\" {\n\t\t\t\\time 4/4\n\t\t\t\musicOne\n\t\t}\n\t\t"
         score += "\\new Lyrics \lyricsto \"one\" {\n\t\t\t\\verseOne\n\t\t}"
         score += "\n\t>>\n}"
         # sharp - is; flat - es
