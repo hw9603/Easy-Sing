@@ -1,9 +1,11 @@
 import sys, os, io
 # sys.path.insert(0,'../')
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QImage, QPalette, QBrush, QKeyEvent
-from PyQt5.QtCore import QSize, QCoreApplication, QThreadPool, QRunnable, Qt
-from PyQt5.QtMultimedia import QSound
+from PyQt5.QtGui import QImage, QPalette, QBrush, QKeyEvent, QIcon
+from PyQt5.QtCore import QSize, QCoreApplication, QThreadPool, QRunnable, Qt, QUrl, QDir
+from PyQt5.QtMultimedia import QSound, QMediaContent, QMediaPlayer
+from PyQt5.QtMultimediaWidgets import QVideoWidget
+from PyQt5 import QtCore
 from mido.sockets import PortServer, connect
 import mido
 from urllib.parse import *
@@ -38,6 +40,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.setupUi(self)
         self.tutorialButton.clicked.connect(self.onTutorialButtonClick)
         self.startButton.clicked.connect(self.onStartButtonClick)
+        self.video = VideoWindow(self)
         self.lyricsFilePath = ""
         self.lyrics = ""
         self.syllables = []
@@ -60,7 +63,8 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
 
     def onTutorialButtonClick(self):
-        print("Try tutorial!")
+        self.video.resize(640, 480)
+        self.video.show()
 
 
     def onBackButtonClick(self):
@@ -248,6 +252,78 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
             event.accept()
         else:
             event.ignore()
+
+
+class VideoWindow(QMainWindow):
+    def __init__(self, parent=None):
+        super(VideoWindow, self).__init__(parent)
+        self.setWindowTitle("Tutorial")
+        self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
+        videoWidget = QVideoWidget()
+
+        self.playButton = QPushButton()
+        self.playButton.setEnabled(False)
+        self.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
+        self.playButton.clicked.connect(self.play)
+
+        self.positionSlider = QSlider(Qt.Horizontal)
+        self.positionSlider.setRange(0, 0)
+        self.positionSlider.sliderMoved.connect(self.setPosition)
+
+        self.errorLabel = QLabel()
+        self.errorLabel.setSizePolicy(QSizePolicy.Preferred,
+                QSizePolicy.Maximum)
+
+        wid = QWidget(self)
+        self.setCentralWidget(wid)
+
+        controlLayout = QHBoxLayout()
+        controlLayout.setContentsMargins(0, 0, 0, 0)
+        controlLayout.addWidget(self.playButton)
+        controlLayout.addWidget(self.positionSlider)
+
+        layout = QVBoxLayout()
+        layout.addWidget(videoWidget)
+        layout.addLayout(controlLayout)
+        layout.addWidget(self.errorLabel)
+
+        wid.setLayout(layout)
+
+        self.mediaPlayer.setVideoOutput(videoWidget)
+        self.mediaPlayer.stateChanged.connect(self.mediaStateChanged)
+        self.mediaPlayer.positionChanged.connect(self.positionChanged)
+        self.mediaPlayer.durationChanged.connect(self.durationChanged)
+        self.mediaPlayer.error.connect(self.handleError)
+
+        self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(os.getcwd() + "/tutorial_pic/test.mov")))
+        self.playButton.setEnabled(True)
+
+
+    def play(self):
+        if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
+            self.mediaPlayer.pause()
+        else:
+            self.mediaPlayer.play()
+
+    def mediaStateChanged(self, state):
+        if self.mediaPlayer.state() == QMediaPlayer.PlayingState:
+            self.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPause))
+        else:
+            self.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
+
+    def positionChanged(self, position):
+        self.positionSlider.setValue(position)
+
+    def durationChanged(self, duration):
+        self.positionSlider.setRange(0, duration)
+
+    def setPosition(self, position):
+        self.mediaPlayer.setPosition(position)
+
+    def handleError(self):
+        self.playButton.setEnabled(False)
+        self.errorLabel.setText("Error: " + self.mediaPlayer.errorString())
+
 
 
 class MidiListener(QRunnable):
