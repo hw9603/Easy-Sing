@@ -68,7 +68,7 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1,2">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,0,1,2">
       <item alignment="Qt::AlignRight|Qt::AlignTop">
        <widget class="QPushButton" name="back5Button">
         <property name="minimumSize">
@@ -82,6 +82,13 @@
         </property>
         <property name="text">
          <string>BACK</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="noteLabel">
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>

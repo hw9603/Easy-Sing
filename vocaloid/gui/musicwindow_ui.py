@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/zihanli/program/498-Vocaloid/vocaloid/gui/musicwindow.ui'
+# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/musicwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.10
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -45,6 +45,10 @@ class Ui_MainWindow(object):
         self.back5Button.setStyleSheet("font: 36pt \"Arial\";")
         self.back5Button.setObjectName("back5Button")
         self.horizontalLayout.addWidget(self.back5Button, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignTop)
+        self.noteLabel = QtWidgets.QLabel(self.centralWidget)
+        self.noteLabel.setText("")
+        self.noteLabel.setObjectName("noteLabel")
+        self.horizontalLayout.addWidget(self.noteLabel)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.next5Button = QtWidgets.QPushButton(self.centralWidget)
@@ -53,8 +57,8 @@ class Ui_MainWindow(object):
         self.next5Button.setObjectName("next5Button")
         self.horizontalLayout.addWidget(self.next5Button, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.horizontalLayout.setStretch(0, 2)
-        self.horizontalLayout.setStretch(1, 1)
-        self.horizontalLayout.setStretch(2, 2)
+        self.horizontalLayout.setStretch(2, 1)
+        self.horizontalLayout.setStretch(3, 2)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.verticalLayout.setStretch(0, 5)
         self.verticalLayout.setStretch(1, 2)

@@ -169,6 +169,8 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.setupUi5(self)
         self.back5Button.clicked.connect(self.onBack2ButtonClick)
         self.next5Button.clicked.connect(self.onNext2ButtonClick)
+
+        self.setNoteImg()
         midiListener = MidiListener(self)
         self.threadpool.start(midiListener)
         midiMonitor = MidiMonitor()
@@ -240,14 +242,33 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         QSound.play(self.soundfilename)
 
 
+    def setNoteImg(self):
+        wholePm = QPixmap("library/whole.png")
+        halfPm = QPixmap("library/half.png")
+        quarterPm = QPixmap("library/quarter.png")
+        eighthPm = QPixmap("library/eighth.png")
+        if self.curr_len == 1:
+            self.noteLabel.setPixmap(eighthPm)
+        elif self.curr_len == 2:
+            self.noteLabel.setPixmap(quarterPm)
+        elif self.curr_len == 3:
+            self.noteLabel.setPixmap(halfPm)
+        elif self.curr_len == 4:
+            self.noteLabel.setPixmap(wholePm)
+        self.noteLabel.adjustSize()
+        self.noteLabel.show()
+
+
     def keyPressEvent(self, event):
         if type(event) == QKeyEvent:
             print(self.curr_len)
             if event.key() == Qt.Key_D and self.curr_len < 4:
                 self.curr_len += 1
-            elif event.key() == Qt.Key_W and self.curr_len > 1:
+                self.setNoteImg()
+            elif event.key() == Qt.Key_H and self.curr_len > 1:
                 self.curr_len -= 1
-            elif event.key() == Qt.Key_G:
+                self.setNoteImg()
+            elif event.key() == Qt.Key_R:
                 self.song.addRest(self.curr_len)
             event.accept()
         else:
