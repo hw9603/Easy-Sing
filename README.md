@@ -29,7 +29,7 @@ At root directory `…/498-Vocaloid`,  run `./run.sh`
 ---
 ### 3.1 Demo
 
-![Alt Text](./tutorial_pic/tutorial.gif)
+![Alt Text](./tutorial/tutorial.gif)
 
 This animation shows a sample, expected use case for our program. It runs through the following steps:
 
