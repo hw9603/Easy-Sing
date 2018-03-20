@@ -49,7 +49,7 @@ class Ui_MainWindow(object):
         self.noteLabel.setMinimumSize(QtCore.QSize(40, 40))
         self.noteLabel.setText("")
         self.noteLabel.setObjectName("noteLabel")
-        self.horizontalLayout.addWidget(self.noteLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.horizontalLayout.addWidget(self.noteLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.next5Button = QtWidgets.QPushButton(self.centralWidget)
         self.next5Button.setMinimumSize(QtCore.QSize(340, 160))
         self.next5Button.setStyleSheet("font: 36pt \"Arial\";")

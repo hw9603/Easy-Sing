@@ -85,7 +85,7 @@
         </property>
        </widget>
       </item>
-      <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+      <item alignment="Qt::AlignHCenter|Qt::AlignTop">
        <widget class="QLabel" name="noteLabel">
         <property name="minimumSize">
          <size>
