@@ -63,7 +63,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
 
     def onTutorialButtonClick(self):
-        self.video.resize(640, 480)
+        self.video.resize(1080, 720)
         self.video.show()
 
 
@@ -295,7 +295,7 @@ class VideoWindow(QMainWindow):
         self.mediaPlayer.durationChanged.connect(self.durationChanged)
         self.mediaPlayer.error.connect(self.handleError)
 
-        self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(os.getcwd() + "/tutorial_pic/test.mov")))
+        self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(os.getcwd() + "/tutorial/EECS498 Vocaloid Tutorial.mp4")))
         self.playButton.setEnabled(True)
 
 
