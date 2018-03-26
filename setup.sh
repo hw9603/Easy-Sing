@@ -68,4 +68,6 @@ fi
 # install brad's voice.
 cp ./brad_voice/results/Feb11-170sentences/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar \
    $DIRECTORY/voice-brad_voice_new-hsmm-5.3-SNAPSHOT.jar
+cp ./brad_voice/results/Mar25-170sentences/voice-brad_s_voice-hsmm-5.3-SNAPSHOT.jar \
+   $DIRECTORY/voice-brad_s_voice-hsmm-5.3-SNAPSHOT.jar
 echo -e "${GREEN}Successfully Installed${NC}"
