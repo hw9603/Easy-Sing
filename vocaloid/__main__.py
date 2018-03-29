@@ -171,6 +171,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.next5Button.clicked.connect(self.onNext2ButtonClick)
 
         self.setNoteImg()
+        self.sylLabel.setText(self.syllables[0])
         midiListener = MidiListener(self)
         self.threadpool.start(midiListener)
         midiMonitor = MidiMonitor()

@@ -80,6 +80,11 @@ class Song:
         print(lily_note)
         self.lily_notes.append(lily_note)
         self.convertToLilyPond()
+        if (len(self.notes) - self.num_rest < len(self.syllables)):
+            self.window.sylLabel.setText(self.syllables[len(self.notes) - self.num_rest])
+        else:
+            self.window.sylLabel.setText("END!")
+            self.window.sylLabel.setStyleSheet('color: red')
 
     def addRest(self, length):
         if self.num_notes >= len(self.syllables):

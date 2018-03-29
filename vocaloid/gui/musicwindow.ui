@@ -68,8 +68,8 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1,2">
-      <item alignment="Qt::AlignRight|Qt::AlignTop">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,0,2">
+      <item alignment="Qt::AlignLeft|Qt::AlignTop">
        <widget class="QPushButton" name="back5Button">
         <property name="minimumSize">
          <size>
@@ -85,20 +85,37 @@
         </property>
        </widget>
       </item>
-      <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-       <widget class="QLabel" name="noteLabel">
-        <property name="minimumSize">
-         <size>
-          <width>40</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="noteLabel">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="sylLabel">
+          <property name="styleSheet">
+           <string notr="true">font: 18pt &quot;.SF NS Text&quot;;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
-      <item alignment="Qt::AlignLeft|Qt::AlignTop">
+      <item alignment="Qt::AlignRight|Qt::AlignTop">
        <widget class="QPushButton" name="next5Button">
         <property name="minimumSize">
          <size>
