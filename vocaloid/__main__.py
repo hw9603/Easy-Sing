@@ -248,16 +248,19 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         halfPm = QPixmap("library/half.png")
         quarterPm = QPixmap("library/quarter.png")
         eighthPm = QPixmap("library/eighth.png")
-        if self.curr_len == 1:
-            self.noteLabel.setPixmap(eighthPm)
-        elif self.curr_len == 2:
-            self.noteLabel.setPixmap(quarterPm)
-        elif self.curr_len == 3:
-            self.noteLabel.setPixmap(halfPm)
-        elif self.curr_len == 4:
-            self.noteLabel.setPixmap(wholePm)
-        self.noteLabel.adjustSize()
-        self.noteLabel.show()
+        try:
+            if self.curr_len == 1:
+                self.noteLabel.setPixmap(eighthPm)
+            elif self.curr_len == 2:
+                self.noteLabel.setPixmap(quarterPm)
+            elif self.curr_len == 3:
+                self.noteLabel.setPixmap(halfPm)
+            elif self.curr_len == 4:
+                self.noteLabel.setPixmap(wholePm)
+            self.noteLabel.adjustSize()
+            self.noteLabel.show()
+        except:
+            return
 
 
     def keyPressEvent(self, event):
