@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/hewen/Stuffs/Winter2018/EECS 498/EECS-498-Vocaloid/vocaloid/gui/musicwindow.ui'
+# Form implementation generated from reading ui file '/Users/zihanli/program/498-Vocaloid/vocaloid/gui/musicwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.10
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -44,7 +44,7 @@ class Ui_MainWindow(object):
         self.back5Button.setMinimumSize(QtCore.QSize(340, 160))
         self.back5Button.setStyleSheet("font: 36pt \"Arial\";")
         self.back5Button.setObjectName("back5Button")
-        self.horizontalLayout.addWidget(self.back5Button, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.horizontalLayout.addWidget(self.back5Button, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignTop)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setSpacing(6)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -52,20 +52,21 @@ class Ui_MainWindow(object):
         self.noteLabel.setMinimumSize(QtCore.QSize(40, 40))
         self.noteLabel.setText("")
         self.noteLabel.setObjectName("noteLabel")
-        self.verticalLayout_2.addWidget(self.noteLabel)
+        self.verticalLayout_2.addWidget(self.noteLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.sylLabel = QtWidgets.QLabel(self.centralWidget)
         self.sylLabel.setStyleSheet("font: 18pt \".SF NS Text\";")
         self.sylLabel.setText("")
         self.sylLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.sylLabel.setObjectName("sylLabel")
-        self.verticalLayout_2.addWidget(self.sylLabel)
+        self.verticalLayout_2.addWidget(self.sylLabel, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.horizontalLayout.addLayout(self.verticalLayout_2)
         self.next5Button = QtWidgets.QPushButton(self.centralWidget)
         self.next5Button.setMinimumSize(QtCore.QSize(340, 160))
         self.next5Button.setStyleSheet("font: 36pt \"Arial\";")
         self.next5Button.setObjectName("next5Button")
-        self.horizontalLayout.addWidget(self.next5Button, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignTop)
+        self.horizontalLayout.addWidget(self.next5Button, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.horizontalLayout.setStretch(0, 2)
+        self.horizontalLayout.setStretch(1, 1)
         self.horizontalLayout.setStretch(2, 2)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.verticalLayout.setStretch(0, 5)
