@@ -164,8 +164,14 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
     def loadFile(self):
         self.lyrics = self.textEdit.toPlainText()
-        self.song.addLyrics(self.lyrics)
         self.syllables = parse_syllables(self.lyrics)
+        phonemes_list = parse_phonemes(get_phonemes(get_ssml(self.lyrics)))
+        if phonemes_list is None or len(self.syllables) != len(phonemes_list):
+            QMessageBox.critical(self, "Error", "Sorry, the lyrics you just entered cannot be parsed correctly! Please try again.")
+            self.syllables = []
+            self.lyrics = ""
+            return
+        self.song.addLyrics(self.lyrics)
         self.setupUi5(self)
         self.back5Button.clicked.connect(self.onBack2ButtonClick)
         self.next5Button.clicked.connect(self.onNext2ButtonClick)
@@ -265,7 +271,6 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
     def keyPressEvent(self, event):
         if type(event) == QKeyEvent:
-            print(self.curr_len)
             if event.key() == Qt.Key_D and self.curr_len < 4:
                 self.curr_len += 1
                 self.setNoteImg()

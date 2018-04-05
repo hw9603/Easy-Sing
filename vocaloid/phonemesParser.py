@@ -76,7 +76,10 @@ def parse_phonemes_by_syllables(phonemes_list):
         return []
     phonemes_syllables_list = []
     for ph in phonemes_list:
-        ph_syll = ph.split('-')
+        try:
+            ph_syll = ph.split('-')
+        except:
+            return
         # Notice: the trailing/leading whitespace is not removed
         for ps in ph_syll:
             phonemes_syllables_list.append(ps)

@@ -77,7 +77,6 @@ class Song:
         octave_map = ['', '\'', '\'\''] # octave 2, 3, 4
         length_map = ['8', '4', '2', '1']
         lily_note = notation_map[pitch] + octave_map[octave - 2] + length_map[length - 1]
-        print(lily_note)
         self.lily_notes.append(lily_note)
         self.convertToLilyPond()
         if (len(self.notes) - self.num_rest < len(self.syllables)):
@@ -102,10 +101,13 @@ class Song:
 
     def addLyrics(self, line):
         self.lyrics = line
-        for syllable in parse_syllables(line):
+        parsed = parse_syllables(line)
+        for syllable in parsed:
             self.syllables.append(syllable)
-        for phonemes in parse_phonemes(get_phonemes(get_ssml(line))):
-            self.phonemes.append(phonemes)
+        phonemes_list = parse_phonemes(get_phonemes(get_ssml(line)))
+        if phonemes_list is not None:
+            for phonemes in phonemes_list:
+                self.phonemes.append(phonemes)
 
     def convertToMaryXML(self):
         # the first line is really long...
