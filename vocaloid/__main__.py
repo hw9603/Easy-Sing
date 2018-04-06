@@ -44,6 +44,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.lyricsFilePath = ""
         self.lyrics = ""
         self.syllables = []
+        self.page_num = 0
         self.song = Song("", self)
         self.curr_len = 2 # It's a quarter note.
         self.threadpool = QThreadPool()
@@ -56,6 +57,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
     def onStartButtonClick(self):
         self.setupUi2(self)
+        self.page_num = 1
         self.chooseButton.clicked.connect(self.openFile)
         self.nextButton.clicked.connect(self.loadFile)
         self.recordButton.clicked.connect(self.recordSound)
@@ -69,12 +71,14 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
     def onBackButtonClick(self):
         self.setupUi(self)
+        self.page_num = 0
         self.tutorialButton.clicked.connect(self.onTutorialButtonClick)
         self.startButton.clicked.connect(self.onStartButtonClick)
 
 
     def onBack2ButtonClick(self):
         self.setupUi2(self)
+        self.page_num = 1
         self.lyrics = ""
         self.syllables = []
         self.lyricsFilePath = ""
@@ -154,7 +158,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
     def openFile(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*)", options=options)
+        fileName, _ = QFileDialog.getOpenFileName(self,"Lyrics File Selection", "","Text files (*.txt)", options=options)
         if fileName:
             self.lyricsFilePath = fileName
             self.fileLabel.setText(fileName.split("/")[-1])
@@ -173,6 +177,8 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
             return
         self.song.addLyrics(self.lyrics)
         self.setupUi5(self)
+        self.page_num = 2
+        print(self.page_num)
         self.back5Button.clicked.connect(self.onBack2ButtonClick)
         self.next5Button.clicked.connect(self.onNext2ButtonClick)
 
@@ -199,7 +205,18 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
 
     def onNext2ButtonClick(self):
+        if len(self.song.notes) == 0:
+            q = QMessageBox()
+            q.setText("Warning: You have not entered any note!")
+            q.setStandardButtons(QMessageBox.Cancel | QMessageBox.Ok)
+            q.setDefaultButton(QMessageBox.Ok)
+            q.setIcon(QMessageBox.Warning)
+            button = q.exec()
+            if button == QMessageBox.Cancel:
+                return
         self.setupUi4(self)
+        self.page_num = 3
+        print(self.page_num)
         self.generateButton.clicked.connect(self.generateSong)
         self.playButton.clicked.connect(self.playSong)
         self.playButton.setDisabled(True)
@@ -209,6 +226,8 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
     def restartProgram(self):
         self.setupUi(self)
+        self.page_num = 0
+        print(self.page_num)
         self.tutorialButton.clicked.connect(self.onTutorialButtonClick)
         self.startButton.clicked.connect(self.onStartButtonClick)
         self.lyricsFilePath = ""
@@ -369,7 +388,10 @@ class MidiListener(QRunnable):
         except:
             print("midi listener already up!")
             return
+
         for message in server:
+            if self.window.page_num != 2:
+                return
             if message.type == 'note_on':
                 C0 = 24
                 octave = (message.note - C0) // 12
