@@ -9,7 +9,7 @@ from vocaloid.utils import write_to_filepath
 from pdf2image import convert_from_path, convert_from_bytes
 import tempfile
 from PIL import Image
-import os
+import os, re
 
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget
@@ -18,13 +18,13 @@ from vocaloid.__main__ import *
 
 def convertToMilliseconds(length):
     """Convert note length to ms. Currently assumes bpm of 120."""
-    if length.value == 1:
+    if length.value == 1:  # eighth
         return 125
-    if length.value == 2:
+    if length.value == 2:  # quarter
         return 250
-    if length.value == 3:
+    if length.value == 3:  # half
         return 500
-    if length.value == 4:
+    if length.value == 4:  # whole
         return 1000
 
 def convertPitchToABS(pitch):
@@ -128,7 +128,14 @@ class Song:
                 line = '<boundary duration="' + str(convertToMilliseconds(note.length)) + '"/>'
                 res = res + line
             else:
-                line = '<prosody rate="' + str(convertToMilliseconds(note.length)) + 'ms"'
+                print(note)
+                phon = note.phonemes.split()
+                phon_final = []
+                for p in phon:
+                    m = re.search('([a-z]|[A-Z]|@)', p)
+                    if m is not None:
+                        phon_final.append(p)
+                line = '<prosody rate="' + str(convertToMilliseconds(note.length)/len(phon_final)) + 'ms"'
                 line = line + ' pitch="' + str(convertPitchToABS(note.pitch)) + 'abs">'
                 res = res + line + "\n"
                 line_ph = '<t ph="'

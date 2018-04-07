@@ -35,3 +35,18 @@ class Note:
 		self.syllable = syllable_in
 		self.phonemes = phonemes_in
 		self.is_rest = is_rest_in
+
+	def __str__(self):
+		string = "===================<Note>===================\n"
+		string += "octave: " + str(self.octave) + "\n"
+		string += "pitch: " + str(self.pitch.name) + "\n"
+		string += "length: " + str(self.length.name) + "\n"
+		string += "syllable: " + str(self.syllable) + "\n"
+		string += "phonemes: " + str(self.phonemes) + "\n"
+		string += "is_rest: " + str(self.is_rest) + "\n"
+		string += "============================================"
+		return string
+
+
+
+
