@@ -168,6 +168,9 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
     def loadFile(self):
         self.lyrics = self.textEdit.toPlainText()
+        if self.lyrics == '':
+            QMessageBox.critical(self, "Error", "You must input the lyrics to generate a song!")
+            return
         self.syllables = parse_syllables(self.lyrics)
         phonemes_list = parse_phonemes(get_phonemes(get_ssml(self.lyrics)))
         if phonemes_list is None or len(self.syllables) != len(phonemes_list):
