@@ -83,6 +83,7 @@ class Song:
             self.window.sylLabel.setText(self.syllables[len(self.notes) - self.num_rest])
         else:
             self.window.sylLabel.setText("END!")
+            self.window.next5Button.setFocus(True)
             self.window.sylLabel.setStyleSheet('color: red')
 
     def addRest(self, length):
