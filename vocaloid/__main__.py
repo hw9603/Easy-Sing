@@ -2,7 +2,7 @@ import sys, os, io
 # sys.path.insert(0,'../')
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QImage, QPalette, QBrush, QKeyEvent, QIcon
-from PyQt5.QtCore import QSize, QCoreApplication, QThreadPool, QRunnable, Qt, QUrl, QDir
+from PyQt5.QtCore import QSize, QCoreApplication, QThreadPool, QRunnable, Qt, QUrl, QDir, QEvent
 from PyQt5.QtMultimedia import QSound, QMediaContent, QMediaPlayer
 from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5 import QtCore
@@ -301,6 +301,8 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
                 self.setNoteImg()
             elif event.key() == Qt.Key_R:
                 self.song.addRest(self.curr_len)
+            elif event.key() == Qt.Key_X:
+                self.song.deleteNote(len(self.song.notes) - 1)
             event.accept()
         else:
             event.ignore()
