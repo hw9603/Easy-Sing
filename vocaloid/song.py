@@ -148,7 +148,7 @@ class Song:
                 phon = note.phonemes.split()
                 phon_final = []
                 for p in phon:
-                    m = re.search('([a-z]|[A-Z]|@)', p)
+                    m = re.search('([a-z]|[A-Z]|@|{)', p)
                     if m is not None:
                         phon_final.append(p)
                 line = '<prosody rate="' + str(convertToMilliseconds(note.length)/len(phon_final)) + 'ms"'
