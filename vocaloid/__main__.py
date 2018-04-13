@@ -219,7 +219,6 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
                 return
         self.setupUi4(self)
         self.page_num = 3
-        print(self.page_num)
         self.listVoices()
         self.comboBox.currentIndexChanged.connect(self.voiceSelection)
         self.generateButton.clicked.connect(lambda: self.generateSong(self.comboBox.currentText()))
@@ -322,7 +321,15 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
             elif event.key() == Qt.Key_R:
                 self.song.addRest(self.curr_len)
             elif event.key() == Qt.Key_X:
-                self.song.deleteNote(len(self.song.notes) - 1)
+                self.song.deleteNote(self.song.curr_note - 1)
+            elif event.key() == Qt.Key_Plus:
+                if self.song.num_notes + self.song.num_rest > self.song.curr_note:
+                    self.song.curr_note += 1
+                    self.song.convertToLilyPond()
+            elif event.key() == Qt.Key_Minus:
+                if self.song.curr_note > 0:
+                    self.song.curr_note -= 1
+                    self.song.convertToLilyPond()
             event.accept()
         else:
             event.ignore()
