@@ -148,7 +148,6 @@ class Song:
                 line = '<boundary duration="' + str(convertToMilliseconds(note.length)) + '"/>'
                 res = res + line
             else:
-                print(note)
                 phon = note.phonemes.split()
                 phon_final = []
                 for p in phon:

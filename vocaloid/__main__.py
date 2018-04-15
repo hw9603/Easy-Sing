@@ -22,7 +22,7 @@ import qdarkstyle
 import pyaudio
 import wave
 from threading import Thread
-import subprocess
+import subprocess, traceback
 
 import simpleaudio as sa
 
@@ -214,6 +214,12 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.threadpool.start(midiMonitor)
 
 
+    def onBack4ButtonClick(self):
+        self.setupUi5(self)
+        self.page_num = 2
+        self.back5Button.clicked.connect(self.onBack2ButtonClick)
+        self.next5Button.clicked.connect(self.onNext2ButtonClick)
+        self.song.displayMusic()
 
 
     def onNext2ButtonClick(self):
@@ -230,14 +236,17 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.page_num = 3
         self.listVoices()
         self.comboBox.currentIndexChanged.connect(self.voiceSelection)
-        self.generateButton.clicked.connect(lambda: self.generateSong(self.comboBox.currentText()))
+        if self.generateButton.text() == "Generate Song":
+            self.generateButton.clicked.connect(lambda: self.generateSong(self.comboBox.currentText()))
+        elif self.generateButton.text() == "Play":
+            self.generateButton.clicked.connect(self.playSong)
         self.restartButton.clicked.connect(self.restartProgram)
-        # self.back4Button.clicked.connect(self.)
+        self.back4Button.clicked.connect(self.onBack4ButtonClick)
         self.exitButton.clicked.connect(self.exitProgram)
 
 
     def voiceSelection(self, i):
-        self.generateButton.setText("Generate")
+        self.generateButton.setText("Generate Song")
         self.generateButton.clicked.connect(lambda: self.generateSong(self.comboBox.currentText()))
 
 
@@ -271,6 +280,10 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
 
     def generateSong(self, voice):
+        if self.generateButton.text() == "Play":
+            return
+        # print("generate")
+        # traceback.print_stack()
         xml = self.song.convertToMaryXML()
         file = open("./tmp/song.xml", "w")
         file.write(xml);
