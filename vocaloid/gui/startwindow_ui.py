@@ -76,6 +76,7 @@ class Ui_MainWindow(object):
         self.textEdit.setSizeIncrement(QtCore.QSize(0, 40))
         self.textEdit.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.textEdit.setStyleSheet("font: 24pt \"Arial\";")
+        self.textEdit.setTabChangesFocus(True)
         self.textEdit.setObjectName("textEdit")
         self.horizontalLayout_3.addWidget(self.textEdit, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.horizontalLayout_2.addLayout(self.horizontalLayout_3)
