@@ -222,14 +222,13 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.listVoices()
         self.comboBox.currentIndexChanged.connect(self.voiceSelection)
         self.generateButton.clicked.connect(lambda: self.generateSong(self.comboBox.currentText()))
-        self.playButton.clicked.connect(self.playSong)
-        self.playButton.setDisabled(True)
         self.restartButton.clicked.connect(self.restartProgram)
+        # self.back4Button.clicked.connect(self.)
         self.exitButton.clicked.connect(self.exitProgram)
 
 
     def voiceSelection(self, i):
-        self.playButton.setDisabled(True)
+        self.generateButton.setText("Generate")
         self.generateButton.clicked.connect(lambda: self.generateSong(self.comboBox.currentText()))
 
 
@@ -283,7 +282,8 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         urlopen(get_string)
         self.soundfilename = './tmp/speech.wav'
         urlretrieve(get_string, self.soundfilename)
-        self.playButton.setDisabled(False)
+        self.generateButton.setText("Play")
+        self.generateButton.clicked.connect(self.playSong)
 
 
     def playSong(self):
