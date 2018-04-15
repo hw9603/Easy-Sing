@@ -211,11 +211,11 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         if len(self.song.notes) == 0:
             q = QMessageBox()
             q.setText("Warning: You have not entered any note!")
-            q.setStandardButtons(QMessageBox.Cancel | QMessageBox.Ok)
-            q.setDefaultButton(QMessageBox.Ok)
+            # q.setStandardButtons(QMessageBox.Cancel | QMessageBox.Ok)
+            q.setStandardButtons(QMessageBox.Ok)
             q.setIcon(QMessageBox.Warning)
             button = q.exec()
-            if button == QMessageBox.Cancel:
+            if button == QMessageBox.Ok:
                 return
         self.setupUi4(self)
         self.page_num = 3
