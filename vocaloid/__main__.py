@@ -218,25 +218,24 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         if len(self.song.notes) == 0:
             q = QMessageBox()
             q.setText("Warning: You have not entered any note!")
-            q.setStandardButtons(QMessageBox.Cancel | QMessageBox.Ok)
-            q.setDefaultButton(QMessageBox.Ok)
+            # q.setStandardButtons(QMessageBox.Cancel | QMessageBox.Ok)
+            q.setStandardButtons(QMessageBox.Ok)
             q.setIcon(QMessageBox.Warning)
             button = q.exec()
-            if button == QMessageBox.Cancel:
+            if button == QMessageBox.Ok:
                 return
         self.setupUi4(self)
         self.page_num = 3
         self.listVoices()
         self.comboBox.currentIndexChanged.connect(self.voiceSelection)
         self.generateButton.clicked.connect(lambda: self.generateSong(self.comboBox.currentText()))
-        self.playButton.clicked.connect(self.playSong)
-        self.playButton.setDisabled(True)
         self.restartButton.clicked.connect(self.restartProgram)
+        # self.back4Button.clicked.connect(self.)
         self.exitButton.clicked.connect(self.exitProgram)
 
 
     def voiceSelection(self, i):
-        self.playButton.setDisabled(True)
+        self.generateButton.setText("Generate")
         self.generateButton.clicked.connect(lambda: self.generateSong(self.comboBox.currentText()))
 
 
@@ -290,7 +289,8 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         urlopen(get_string)
         self.soundfilename = './tmp/speech.wav'
         urlretrieve(get_string, self.soundfilename)
-        self.playButton.setDisabled(False)
+        self.generateButton.setText("Play")
+        self.generateButton.clicked.connect(self.playSong)
 
 
     def playSong(self):
