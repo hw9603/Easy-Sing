@@ -9,7 +9,7 @@ from vocaloid.utils import write_to_filepath
 from pdf2image import convert_from_path, convert_from_bytes
 import tempfile
 from PIL import Image
-import os, re
+import os, re, copy
 
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget
@@ -50,6 +50,7 @@ class Song:
         self.lyrics = ""
         self.lily_notes = []
         self.num_rest = 0
+        self.curr_note = 0  # including rest note
         self.syllables = parse_syllables(lyrics)
         self.phonemes = parse_phonemes(get_phonemes(get_ssml(lyrics)))
 
@@ -72,6 +73,7 @@ class Song:
             octave = 4
         n = Note(octave, pitch, length, syllable, phonemes)
         self.notes.append(n)
+        self.curr_note += 1
         self.num_notes = self.num_notes + 1
         notation_map = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
         octave_map = ['', '\'', '\'\''] # octave 2, 3, 4
@@ -97,8 +99,22 @@ class Song:
         length_map = ['8', '4', '2', '1']
         lily_note = 'r' + length_map[length - 1]
         self.notes.append(n)
+        self.curr_note += 1
         self.lily_notes.append(lily_note)
         self.convertToLilyPond()
+
+    def deleteNote(self, index):
+        if index >= len(self.notes) or index < 0:
+            return
+        delete_item = self.notes.pop(index)
+        self.curr_note -= 1
+        if delete_item.is_rest == True:
+            self.num_rest -= 1
+        else:
+            self.num_notes -= 1
+        self.lily_notes.pop(index)
+        self.convertToLilyPond()
+        self.window.sylLabel.setText(self.syllables[len(self.notes) - self.num_rest])
 
     def addLyrics(self, line):
         self.lyrics = line
@@ -132,7 +148,7 @@ class Song:
                 phon = note.phonemes.split()
                 phon_final = []
                 for p in phon:
-                    m = re.search('([a-z]|[A-Z]|@)', p)
+                    m = re.search('([a-z]|[A-Z]|@|{)', p)
                     if m is not None:
                         phon_final.append(p)
                 line = '<prosody rate="' + str(convertToMilliseconds(note.length)/len(phon_final)) + 'ms"'
@@ -165,7 +181,10 @@ class Song:
         # sharp - is; flat - es
         # c - octave 2; c' - octave 3; c'' - octave 4
         # "cis4 bes'8. a'16 g'4. f'8 e'4 d'4 c'2 c''2"
-        melody = ' '.join(self.lily_notes)
+        lily_notes = copy.deepcopy(self.lily_notes)
+        lily_notes.insert(self.curr_note - 1, "\override NoteHead.color = #red")
+        lily_notes.insert(self.curr_note + 1, "\override NoteHead.color = #black")
+        melody = ' '.join(lily_notes)
         lyrics = ' '.join(self.syllables)
         lily_string = musicOne + melody + verseOne + lyrics + score
         write_to_filepath("tmp/song.ly", lily_string)

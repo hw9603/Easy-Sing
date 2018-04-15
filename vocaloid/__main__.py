@@ -2,7 +2,7 @@ import sys, os, io
 # sys.path.insert(0,'../')
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QImage, QPalette, QBrush, QKeyEvent, QIcon
-from PyQt5.QtCore import QSize, QCoreApplication, QThreadPool, QRunnable, Qt, QUrl, QDir
+from PyQt5.QtCore import QSize, QCoreApplication, QThreadPool, QRunnable, Qt, QUrl, QDir, QEvent
 from PyQt5.QtMultimedia import QSound, QMediaContent, QMediaPlayer
 from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5 import QtCore
@@ -221,12 +221,18 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
                 return
         self.setupUi4(self)
         self.page_num = 3
-        print(self.page_num)
-        self.generateButton.clicked.connect(self.generateSong)
+        self.listVoices()
+        self.comboBox.currentIndexChanged.connect(self.voiceSelection)
+        self.generateButton.clicked.connect(lambda: self.generateSong(self.comboBox.currentText()))
         self.playButton.clicked.connect(self.playSong)
         self.playButton.setDisabled(True)
         self.restartButton.clicked.connect(self.restartProgram)
         self.exitButton.clicked.connect(self.exitProgram)
+
+
+    def voiceSelection(self, i):
+        self.playButton.setDisabled(True)
+        self.generateButton.clicked.connect(lambda: self.generateSong(self.comboBox.currentText()))
 
 
     def restartProgram(self):
@@ -246,7 +252,19 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         sys.exit()
 
 
-    def generateSong(self):
+    def listVoices(self):
+        get_voice = "http://localhost:59125/voices"
+        with urlopen(get_voice) as response:
+            html = response.read()
+        html = str(html)
+        html = html[2:]
+        html = html[:-3]
+        voices = html.split("\\n")
+        for voice in voices:
+            self.comboBox.addItem(voice.split()[0])
+
+
+    def generateSong(self, voice):
         xml = self.song.convertToMaryXML()
         file = open("./tmp/song.xml", "w")
         file.write(xml);
@@ -259,10 +277,11 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         output_type = "AUDIO"
         locale = "en_US"
         audio = "WAVE_FILE"
+        # voice = "brad_s_voice-hsmm"
         get_string = host_name + port_num + operation + "INPUT_TEXT=" \
                      + quote_plus(xml) + "&INPUT_TYPE=" + input_type \
                      + "&OUTPUT_TYPE=" + output_type + "&LOCALE=" + locale\
-                     + "&AUDIO=" + audio
+                     + "&AUDIO=" + audio + "&VOICE=" + voice
         urlopen(get_string)
         self.soundfilename = './tmp/speech.wav'
         urlretrieve(get_string, self.soundfilename)
@@ -303,6 +322,16 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
                 self.setNoteImg()
             elif event.key() == Qt.Key_R:
                 self.song.addRest(self.curr_len)
+            elif event.key() == Qt.Key_X:
+                self.song.deleteNote(self.song.curr_note - 1)
+            elif event.key() == Qt.Key_Plus:
+                if self.song.num_notes + self.song.num_rest > self.song.curr_note:
+                    self.song.curr_note += 1
+                    self.song.convertToLilyPond()
+            elif event.key() == Qt.Key_Minus:
+                if self.song.curr_note > 0:
+                    self.song.curr_note -= 1
+                    self.song.convertToLilyPond()
             event.accept()
         else:
             event.ignore()
