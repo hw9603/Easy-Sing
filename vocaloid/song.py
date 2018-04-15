@@ -69,6 +69,7 @@ class Song:
         if self.num_notes >= len(self.syllables):
             print("Can't add any more notes!")
             return
+
         syllable = self.syllables[len(self.notes) - self.num_rest]
         phonemes = self.phonemes[len(self.notes) - self.num_rest]
         if octave < 3:
@@ -91,6 +92,8 @@ class Song:
             self.window.sylLabel.setText("END!")
             self.window.next5Button.setFocus(True)
             self.window.sylLabel.setStyleSheet('color: red')
+        if self.num_notes == len(self.syllables):
+            self.window.next5Button.setEnabled(True)
 
     def addRest(self, length):
         if self.num_notes >= len(self.syllables):
@@ -110,6 +113,7 @@ class Song:
     def deleteNote(self, index):
         if index >= len(self.notes) or index < 0:
             return
+
         delete_item = self.notes.pop(index)
         self.curr_note -= 1
         if delete_item.is_rest == True:
@@ -119,6 +123,8 @@ class Song:
         self.lily_notes.pop(index)
         self.convertToLilyPond()
         self.window.sylLabel.setText(self.syllables[len(self.notes) - self.num_rest])
+        if self.num_notes < len(self.syllables):
+            self.window.next5Button.setEnabled(False)
 
     def addLyrics(self, line):
         self.lyrics = line

@@ -188,9 +188,10 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.song.addLyrics(self.lyrics)
         self.setupUi5(self)
         self.page_num = 2
-        print(self.page_num)
+        # print(self.page_num)
         self.back5Button.clicked.connect(self.onBack2ButtonClick)
         self.next5Button.clicked.connect(self.onNext2ButtonClick)
+        self.next5Button.setEnabled(False)
 
         self.setNoteImg()
         self.sylLabel.setText(self.syllables[0])
