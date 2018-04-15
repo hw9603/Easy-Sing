@@ -27,7 +27,7 @@ def convertToMilliseconds(length):
     if length.value == 4:  # whole
         return 1000
 
-def convertPitchToABS(pitch):
+def convertPitchToABS(pitch, octave):
     # pitches ordered according to experimental correspondence data
     # lowest is C4, highest is B4
     # pitches = [1275, 1285, 1300, 1315,
@@ -36,10 +36,14 @@ def convertPitchToABS(pitch):
 
     # pitches ordered according to experimental correspondence data
     # lowest is C3, highest is B3
-    pitches = [1130, 1140, 1150, 1160,
+    pitches = [[1130, 1140, 1150, 1160,
                1170, 1180, 1192, 1204,
-               1216, 1228, 1240, 1260]
-    return pitches[pitch.value]
+               1216, 1228, 1240, 1260],
+               [1275, 1285, 1300, 1315,
+                1330, 1350, 1380, 1400,
+                1420, 1440, 1470, 1495]]
+
+    return pitches[octave][pitch.value]
 
 class Song:
     def __init__(self, lyrics, window_in):
@@ -67,8 +71,8 @@ class Song:
             return
         syllable = self.syllables[len(self.notes) - self.num_rest]
         phonemes = self.phonemes[len(self.notes) - self.num_rest]
-        if octave < 2:
-            octave = 2
+        if octave < 3:
+            octave = 3
         elif octave > 4:
             octave = 4
         n = Note(octave, pitch, length, syllable, phonemes)
@@ -152,7 +156,7 @@ class Song:
                     if m is not None:
                         phon_final.append(p)
                 line = '<prosody rate="' + str(convertToMilliseconds(note.length)/len(phon_final)) + 'ms"'
-                line = line + ' pitch="' + str(convertPitchToABS(note.pitch)) + 'abs">'
+                line = line + ' pitch="' + str(convertPitchToABS(note.pitch, note.octave - 3)) + 'abs">'
                 res = res + line + "\n"
                 line_ph = '<t ph="'
                 for phoneme in note.phonemes:

@@ -214,6 +214,8 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.threadpool.start(midiMonitor)
 
 
+
+
     def onNext2ButtonClick(self):
         if len(self.song.notes) == 0:
             q = QMessageBox()
@@ -436,13 +438,13 @@ class MidiListener(QRunnable):
                 octave = (message.note - C0) // 12
                 pitch = (message.note - C0) % 12
                 length = self.window.curr_len
-                if octave > 3:
+                if octave > 4:
+                    octave = 4
+                elif octave < 3:
                     octave = 3
-                elif octave < 1:
-                    octave = 1
                 self.window.song.addNote(octave, pitch, length)
                 notation_map = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
-                wave_obj = sa.WaveObject.from_wave_file("library/" + notation_map[pitch] + str(octave) + ".wav")
+                wave_obj = sa.WaveObject.from_wave_file("library/" + notation_map[pitch] + str(octave - 1) + ".wav")
                 play_obj = wave_obj.play()
 
 
