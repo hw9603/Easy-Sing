@@ -92,7 +92,6 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
     def recordSound(self):
         if self.onRecording:
             # TODO enable buttons.
-            self.chooseButton.setEnabled(False)
             self.onRecording = False
             self.recordThread.join()
             if not os.path.isfile(WAVE_OUTPUT_FILENAME):
@@ -100,8 +99,14 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
                 return
             self.lyrics = self.ask_google_for_text(WAVE_OUTPUT_FILENAME)
             self.textEdit.setText(self.lyrics)
+            self.chooseButton.setEnabled(True)
+            self.nextButton.setEnabled(True)
+            self.backButton.setEnabled(True)
         else:
             # TODO disable buttons
+            self.chooseButton.setEnabled(False)
+            self.nextButton.setEnabled(False)
+            self.backButton.setEnabled(False)
             self.onRecording = True
             self.recordThread = Thread(target = self.record_and_save_to_file, args = ( ))
             self.recordThread.start()
