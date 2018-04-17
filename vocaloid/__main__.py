@@ -379,7 +379,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
                     pitch = pitch * 2 - 1
                 length = self.curr_len
                 self.song.addNote(octave, pitch, length)
-                notation_map = ["c", "d", "e", "f", "g", "a", "b"]
+                notation_map = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
                 wave_obj = sa.WaveObject.from_wave_file("library/" + notation_map[pitch] + str(octave - 1) + ".wav")
                 play_obj = wave_obj.play()
             event.accept()
