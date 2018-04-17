@@ -50,6 +50,7 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
         self.threadpool = QThreadPool()
         # for recording:
         self.onRecording = False
+        self.midiStart = False
         self.recordThread = 0
         if not os.path.exists("./tmp"):
             os.makedirs("./tmp")
@@ -195,10 +196,12 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
         self.setNoteImg()
         self.sylLabel.setText(self.syllables[0])
-        midiListener = MidiListener(self)
-        self.threadpool.start(midiListener)
-        midiMonitor = MidiMonitor()
-        self.threadpool.start(midiMonitor)
+        if self.midiStart == False:
+            midiListener = MidiListener(self)
+            self.threadpool.start(midiListener)
+            midiMonitor = MidiMonitor()
+            self.threadpool.start(midiMonitor)
+            self.midiStart = True
 
 
     def renderSyllables(self, syllables):
