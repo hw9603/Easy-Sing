@@ -122,6 +122,7 @@ class Song:
             self.num_notes -= 1
         self.lily_notes.pop(index)
         self.convertToLilyPond()
+        self.window.sylLabel.setStyleSheet('color: white')
         self.window.sylLabel.setText(self.syllables[len(self.notes) - self.num_rest])
         if self.num_notes < len(self.syllables):
             self.window.next5Button.setEnabled(False)
