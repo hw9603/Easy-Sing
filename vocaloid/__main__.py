@@ -337,7 +337,8 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
 
 
     def keyPressEvent(self, event):
-        if type(event) == QKeyEvent:
+        if self.page_num == 2 and type(event) == QKeyEvent:
+            key = event.key()
             if event.key() == Qt.Key_D and self.curr_len < 4:
                 self.curr_len += 1
                 self.setNoteImg()
@@ -356,6 +357,31 @@ class MainWindow(QMainWindow, MainUI, QRunnable):
                 if self.song.curr_note > 0:
                     self.song.curr_note -= 1
                     self.song.convertToLilyPond()
+            elif event.key() in [Qt.Key_1, Qt.Key_2, Qt.Key_3, Qt.Key_4, Qt.Key_5, Qt.Key_6, Qt.Key_7]:
+                octave = 3
+                pitch = [Qt.Key_1, Qt.Key_2, Qt.Key_3, Qt.Key_4, Qt.Key_5, Qt.Key_6, Qt.Key_7].index(key)
+                if pitch <= 2:
+                    pitch *= 2
+                else:
+                    pitch = pitch * 2 - 1
+                print(pitch)
+                length = self.curr_len
+                self.song.addNote(octave, pitch, length)
+                notation_map = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
+                wave_obj = sa.WaveObject.from_wave_file("library/" + notation_map[pitch] + str(octave - 1) + ".wav")
+                play_obj = wave_obj.play()
+            elif event.key() in [Qt.Key_8, Qt.Key_9, Qt.Key_0, Qt.Key_U, Qt.Key_I, Qt.Key_O, Qt.Key_P]:
+                octave = 4
+                pitch = [Qt.Key_8, Qt.Key_9, Qt.Key_0, Qt.Key_U, Qt.Key_I, Qt.Key_O, Qt.Key_P].index(key)
+                if pitch <= 2:
+                    pitch *= 2
+                else:
+                    pitch = pitch * 2 - 1
+                length = self.curr_len
+                self.song.addNote(octave, pitch, length)
+                notation_map = ["c", "d", "e", "f", "g", "a", "b"]
+                wave_obj = sa.WaveObject.from_wave_file("library/" + notation_map[pitch] + str(octave - 1) + ".wav")
+                play_obj = wave_obj.play()
             event.accept()
         else:
             event.ignore()
