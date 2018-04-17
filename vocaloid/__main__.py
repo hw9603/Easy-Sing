@@ -452,14 +452,11 @@ class MidiListener(QRunnable):
                 octave = (message.note - C0) // 12
                 pitch = (message.note - C0) % 12
                 length = self.window.curr_len
-                if octave > 4:
-                    octave = 4
-                elif octave < 3:
-                    octave = 3
-                self.window.song.addNote(octave, pitch, length)
-                notation_map = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
-                wave_obj = sa.WaveObject.from_wave_file("library/" + notation_map[pitch] + str(octave - 1) + ".wav")
-                play_obj = wave_obj.play()
+                if octave == 4 or octave == 3:
+                    self.window.song.addNote(octave, pitch, length)
+                    notation_map = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
+                    wave_obj = sa.WaveObject.from_wave_file("library/" + notation_map[pitch] + str(octave - 1) + ".wav")
+                    play_obj = wave_obj.play()
 
 
 def main():
