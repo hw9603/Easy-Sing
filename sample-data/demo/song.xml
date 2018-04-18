@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><maryxml xmlns="http://mary.dfki.de/2002/MaryXML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="0.5" xml:lang="en-US">
+<p>
+<s>
+<prosody rate="125.0ms" pitch="1204abs">
+<t ph="' h { " >
+Hap
+</t>
+</prosody>
+<prosody rate="125.0ms" pitch="1204abs">
+<t ph=" p i" >
+py
+</t>
+</prosody>
+<prosody rate="166.66666666666666ms" pitch="1228abs">
+<t ph="' b r= T " >
+birth
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1204abs">
+<t ph=" d EI" >
+day
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1275abs">
+<t ph="' t u" >
+to
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1260abs">
+<t ph="' j u" >
+you,
+</t>
+</prosody>
+<boundary duration="500"/><prosody rate="125.0ms" pitch="1204abs">
+<t ph="' h { " >
+hap
+</t>
+</prosody>
+<prosody rate="125.0ms" pitch="1204abs">
+<t ph=" p i" >
+py
+</t>
+</prosody>
+<prosody rate="166.66666666666666ms" pitch="1228abs">
+<t ph="' b r= T " >
+birth
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1204abs">
+<t ph=" d EI" >
+day
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1300abs">
+<t ph="' t u" >
+to
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1275abs">
+<t ph="' j u" >
+you,
+</t>
+</prosody>
+<boundary duration="500"/><prosody rate="125.0ms" pitch="1204abs">
+<t ph="' h { " >
+hap
+</t>
+</prosody>
+<prosody rate="125.0ms" pitch="1204abs">
+<t ph=" p i" >
+py
+</t>
+</prosody>
+<prosody rate="166.66666666666666ms" pitch="1400abs">
+<t ph="' b r= T " >
+birth
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1330abs">
+<t ph=" d EI" >
+day
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1275abs">
+<t ph="' t u" >
+to
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1260abs">
+<t ph="' j u" >
+you
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1228abs">
+<t ph="' j u" >
+u,
+</t>
+</prosody>
+<boundary duration="500"/><prosody rate="125.0ms" pitch="1350abs">
+<t ph="' h { " >
+hap
+</t>
+</prosody>
+<prosody rate="125.0ms" pitch="1350abs">
+<t ph=" p i" >
+py
+</t>
+</prosody>
+<prosody rate="166.66666666666666ms" pitch="1330abs">
+<t ph="' b r= T " >
+birth
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1275abs">
+<t ph=" d EI" >
+day
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1300abs">
+<t ph="' t u" >
+to
+</t>
+</prosody>
+<prosody rate="250.0ms" pitch="1275abs">
+<t ph="' j u" >
+you.
+</t>
+</prosody>
+</s>
+</p>
+</maryxml>
