@@ -14,13 +14,14 @@ Example usage:
 from urllib.request import Request, urlopen
 import json
 import requests
+import pyphen
 
 def parse_syllables(lyrics):
     """
     Return a list of syllables. Input words are split into syllables using
     function in pyphen.
     """
-    # dic = pyphen.Pyphen(lang='en_US')
+    dic = pyphen.Pyphen(lang='en_US')
 
 
     words = lyrics.split()
@@ -31,9 +32,12 @@ def parse_syllables(lyrics):
         response = requests.get(url, headers=headers)
 
         response = response.json()
-        syllables = response["syllables"]["list"]
-        # hyphened_word = dic.inserted(word)
-        # syllables = hyphened_word.split('-')
+        print(response)
+        try:
+            syllables = response["syllables"]["list"]
+        except:
+            hyphened_word = dic.inserted(word)
+            syllables = hyphened_word.split('-')
 
         for s in syllables:
             syllables_list.append(s)
