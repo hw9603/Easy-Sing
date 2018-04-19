@@ -17,15 +17,16 @@ from PyQt5.QtWidgets import QWidget
 from vocaloid.__main__ import *
 
 def convertToMilliseconds(length):
-    """Convert note length to ms. Currently assumes bpm of 120."""
+    """Convert note length to ms. Currently assumes bpm of 170."""
+    """Previously quarter was 250, which is bpm 240 instead of 120."""
     if length.value == 1:  # eighth
-        return 125
+        return 175
     if length.value == 2:  # quarter
-        return 250
+        return 350
     if length.value == 3:  # half
-        return 500
+        return 700
     if length.value == 4:  # whole
-        return 1000
+        return 1400
 
 def convertPitchToABS(pitch, octave):
     # pitches ordered according to experimental correspondence data
